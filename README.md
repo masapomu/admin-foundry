@@ -6,9 +6,29 @@ Modern admin UI patterns for server-rendered web applications.
 
 Offline-ready admin UI design system and Codex skill for server-rendered PHP, ASP.NET, and other postback-style web apps. No CDN required.
 
+**[Explore the live demo](https://masapomu.github.io/admin-foundry/)** · [Browse the reference UI](https://masapomu.github.io/admin-foundry/demo/dashboard.html)
+
 AdminFoundry combines a design system, canonical HTML/CSS/JavaScript reference implementation, and the `server-rendered-admin-ui` skill. It uses Bootstrap 5.3.x and Bootstrap Icons to modernize administration and operations consoles while preserving ordinary server-rendered pages, GET filters, POST forms, and Post/Redirect/Get.
 
 Modern UI does not require React, a SPA, client-side routing, a Node runtime, or a CDN. This project is for PHP, ASP.NET/Razor, Perl, Python, and similar applications that render HTML on the server. JavaScript progressively enhances the page; the host remains responsible for routing, data, authentication, CSRF, validation, and translation.
+
+## Preview
+
+The showcase opens the canonical reference UI as a static demo. Actions are simulated; nothing is saved or sent to a backend.
+
+### Dashboard
+
+![AdminFoundry Dashboard](docs/images/dashboard.png)
+
+### User administration
+
+![AdminFoundry Users](docs/images/users.png)
+
+### Dense log view
+
+![AdminFoundry Logs](docs/images/logs.png)
+
+[Explore the live demo →](https://masapomu.github.io/admin-foundry/)
 
 ## Core principles
 
@@ -105,6 +125,11 @@ skills/server-rendered-admin-ui/
 LICENSE                             MIT for AdminFoundry-authored work
 THIRD-PARTY-NOTICES.md              dependency versions and licenses
 tests/                              maintainer-only checks; no runtime dependency
+site/                               showcase landing and artifact assembly script
+docs/images/                        README and showcase screenshots
+.github/workflows/pages.yml         GitHub Pages artifact and deployment workflow
 ```
 
 This is a **0.1.0 prerelease** and has not been published to a plugin directory. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for Bootstrap, Bootstrap Icons, Chart.js, and transitive license information. AdminFoundry-authored code and documentation are [MIT licensed](LICENSE); third-party distributions retain their own licenses.
+
+To preview the Pages artifact locally, run `pwsh -File site/build-pages.ps1` from a fresh checkout and serve `.work/pages/` with any static server. The script copies the canonical reference UI and its local CSS, JavaScript, icons, and vendor assets into a disposable publish directory; the source pages remain in one place. For deployment, set the repository's **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The planned project site URL is `https://masapomu.github.io/admin-foundry/`; it will work after the workflow is committed and Pages is enabled.

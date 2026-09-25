@@ -6,9 +6,29 @@
 
 AdminFoundryは、PHP、ASP.NETなどのPOSTバック型アプリに向けた、オフライン対応の管理UIデザインシステムとCodex Skillです。CDNは不要です。
 
+**[Live Demoを見る](https://masapomu.github.io/admin-foundry/)** · [Reference UIを開く](https://masapomu.github.io/admin-foundry/demo/dashboard.html)
+
 デザインシステム、実装の基準となるHTML/CSS/JavaScriptのReference UI、`server-rendered-admin-ui` Skillをひとつにまとめています。Bootstrap 5.3.xとBootstrap Iconsを使い、通常のページ遷移、GETフィルター、POSTフォーム、Post/Redirect/Getを保ちながら管理画面を整えます。
 
 現代的なUIを作るために、React、SPA、クライアント側ルーター、実行時のNode、CDNが必須とは限りません。対象はPHP、ASP.NET/Razor、Perl、Pythonなど、サーバーでHTMLを描画するアプリです。JavaScriptは画面を補助し、ルーティング、データ、認証、CSRF、検証、翻訳はホストアプリが担当します。
+
+## Preview
+
+Showcaseから、実装の基準となるReference UIを静的Demoとして試せます。操作は模擬動作で、データを保存したりバックエンドへ送信したりしません。
+
+### Dashboard
+
+![AdminFoundryのDashboard](docs/images/dashboard.png)
+
+### User administration
+
+![AdminFoundryのUsers画面](docs/images/users.png)
+
+### Dense log view
+
+![AdminFoundryのLogs画面](docs/images/logs.png)
+
+[Live Demoを開く →](https://masapomu.github.io/admin-foundry/)
 
 ## 基本原則
 
@@ -105,6 +125,11 @@ skills/server-rendered-admin-ui/
 LICENSE                             自作部分のMITライセンス
 THIRD-PARTY-NOTICES.md              依存ライブラリの版とライセンス
 tests/                              保守用検証。実行時には不要
+site/                               ShowcaseのLandingとartifact組み立てスクリプト
+docs/images/                        READMEとShowcaseのスクリーンショット
+.github/workflows/pages.yml         GitHub Pagesのartifact・デプロイworkflow
 ```
 
 現在は**0.1.0の初期リリース前**で、Plugin Directoryには未公開です。Bootstrap、Bootstrap Icons、Chart.jsと関連ライブラリのライセンスは [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) を参照してください。AdminFoundryの自作コードと文書は [MITライセンス](LICENSE) で、第三者配布物にはそれぞれのライセンスが適用されます。
+
+Pagesと同じartifactをローカルで確認するには、新しいcheckoutで `pwsh -File site/build-pages.ps1` を実行し、`.work/pages/` を任意の静的サーバーで配信してください。スクリプトはcanonical Reference UIとローカルのCSS、JavaScript、アイコン、vendorアセットを一時的な公開ディレクトリへコピーします。ソースは一か所のままです。公開時はリポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定してください。予定URLは `https://masapomu.github.io/admin-foundry/` です。workflowをコミットしてPagesを有効にした後に利用できます。
