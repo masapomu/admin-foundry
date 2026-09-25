@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en" data-ui-theme="gray" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="Offline administration UI reference, server-rendered HTML first.">
+    <title>Internationalization · WebUI Design Lab</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../assets/css/admin-ui.css">
+    <script defer src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script><script defer src="../assets/js/admin-ui.js"></script><script defer src="../assets/js/reference-demo.js"></script>
+  </head>
+  <body>
+    <a class="ui-skip" href="#main">Skip to content</a>
+    <header class="ui-header">
+      <button type="button" class="btn btn-link ui-icon-btn ui-mobile-toggle" data-ui-sidebar aria-controls="ui-sidebar" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list" aria-hidden="true"></i></button><a class="ui-brand" href="dashboard.html"><span class="ui-brand-mark"><i class="bi bi-intersect" aria-hidden="true"></i></span>Acme Operations</a>
+      <div class="ui-header-meta">
+        <span>Workspace</span><i class="bi bi-chevron-right" aria-hidden="true"></i><strong>Administration</strong><span class="ui-status">Reference</span>
+      </div>
+      <div class="ui-header-end">
+        <a href="i18n.html" class="btn btn-link"><i class="bi bi-translate" aria-hidden="true"></i><span>EN / 日本語</span></a><span class="ui-account-label ui-small">Alex Morgan</span><span class="ui-avatar" aria-label="Alex Morgan">AM</span>
+      </div>
+    </header>
+    <div class="ui-shell">
+      <aside class="ui-sidebar" id="ui-sidebar">
+        <div>
+          <p class="ui-nav-label">
+            Workspace
+          </p>
+          <nav class="ui-nav" aria-label="Workspace">
+            <a href="dashboard.html" ><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Overview</span></a><a href="users.html" ><i class="bi bi-people" aria-hidden="true"></i><span>Users</span></a><a href="system.html" ><i class="bi bi-hdd-stack" aria-hidden="true"></i><span>System</span></a><a href="logs.html" ><i class="bi bi-list-ul" aria-hidden="true"></i><span>Activity logs</span></a>
+          </nav>
+        </div>
+        <div>
+          <p class="ui-nav-label">
+            Design reference
+          </p>
+          <nav class="ui-nav" aria-label="Design reference">
+            <a href="forms.html" ><i class="bi bi-sliders2" aria-hidden="true"></i><span>Forms</span></a><a href="components.html" ><i class="bi bi-grid" aria-hidden="true"></i><span>Components</span></a><a href="patterns.html" ><i class="bi bi-layers" aria-hidden="true"></i><span>State patterns</span></a><a href="i18n.html" aria-current="page"><i class="bi bi-translate" aria-hidden="true"></i><span>Internationalization</span></a>
+          </nav>
+        </div>
+        <div class="ui-sidebar-foot">
+          <strong>WebUI Design Lab</strong>
+          <p class="mb-2">
+            Foundation / 0.1
+          </p>
+          <span><i class="bi bi-circle-fill" aria-hidden="true"></i> Local assets · Offline ready</span>
+        </div>
+      </aside>
+      <main class="ui-main" id="main" tabindex="-1">
+        <div class="ui-breadcrumb">
+          Workspace <i class="bi bi-chevron-right" aria-hidden="true"></i> <span>Internationalization</span>
+        </div>
+        <div class="ui-page-header">
+          <div>
+            <h1>
+              Internationalization
+            </h1>
+            <p>
+              The same components, across languages and longer translated text.
+            </p>
+          </div>
+          <div class="ui-actions">
+          </div>
+        </div>
+        <noscript>
+          <div class="alert alert-info">
+            All reference content is available. Interactive previews require JavaScript; search and POST processing belong to the host application.
+          </div>
+        </noscript>
+        <div class="ui-actions mb-4">
+          <a class="btn btn-secondary" href="#sample-en" lang="en">English</a><a class="btn btn-secondary" href="#sample-ja" lang="ja">日本語</a><span class="ui-note">Component comparisons · language preferences belong to the host</span>
+        </div>
+        <div class="ui-two">
+          <div id="sample-en">
+            <section lang="en" class="ui-locale-sample ui-example">
+              <h2>
+                English
+              </h2>
+              <p>
+                System fonts · en-US display
+              </p>
+              <div class="ui-panel">
+                <div class="ui-section-head">
+                  <strong>Display name</strong><span class="ui-status ui-status-success">Enabled</span>
+                </div>
+                <label class="form-label" for="name-en">Display name</label><input class="form-control mb-3" id="name-en" value="Alex Morgan">
+                <dl class="ui-definition">
+                  <dt>
+                    Last updated
+                  </dt>
+                  <dd>
+                    <time datetime="2026-09-25T09:42:00Z">Sep 25, 2026, 9:42 AM UTC</time>
+                  </dd>
+                  <dt>
+                    Processed records
+                  </dt>
+                  <dd>
+                    1,248.50
+                  </dd>
+                </dl>
+                <div class="ui-actions">
+                  <button type="button" class="btn btn-secondary ui-enhanced-only" data-ui-message data-confirm-title="Review changes" data-confirm-message="This is a preview. No data is saved." data-confirm-button="OK"><i class="bi bi-info-circle" aria-hidden="true"></i>Preview changes</button><a class="btn btn-secondary" href="i18n.html">Cancel</a>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div id="sample-ja">
+            <section lang="ja" class="ui-locale-sample ui-example">
+              <h2>
+                日本語
+              </h2>
+              <p>
+                システムフォント · ja-JP 表示
+              </p>
+              <div class="ui-panel">
+                <div class="ui-section-head">
+                  <strong>表示名</strong><span class="ui-status ui-status-success">有効</span>
+                </div>
+                <label class="form-label" for="name-ja">表示名</label><input class="form-control mb-3" id="name-ja" value="田中 美咲">
+                <dl class="ui-definition">
+                  <dt>
+                    更新日時
+                  </dt>
+                  <dd>
+                    <time datetime="2026-09-25T09:42:00Z">2026年9月25日 18:42 JST</time>
+                  </dd>
+                  <dt>
+                    処理済み件数
+                  </dt>
+                  <dd>
+                    1,248.50
+                  </dd>
+                </dl>
+                <div class="ui-actions">
+                  <button type="button" class="btn btn-secondary ui-enhanced-only" data-ui-message data-confirm-title="変更内容の確認" data-confirm-message="これは操作プレビューです。データは保存されません。" data-confirm-button="確認"><i class="bi bi-info-circle" aria-hidden="true"></i>変更内容をプレビュー</button><a class="btn btn-secondary" href="i18n.html">キャンセル</a>
+                </div>
+              </div>
+            </section>
+          </div>
+          <section lang="de" class="ui-locale-sample ui-example">
+            <h2>
+              Text expansion · Deutsch
+            </h2>
+            <p>
+              Longer labels must wrap without hiding actions.
+            </p>
+            <div class="ui-panel">
+              <div class="ui-section-head">
+                <strong>Anzeigename des Arbeitsbereichsbenutzers</strong><span class="ui-status ui-status-success">Aktiviert</span>
+              </div>
+              <label class="form-label" for="name-de">Anzeigename des Arbeitsbereichsbenutzers</label><input class="form-control mb-3" id="name-de" value="Alex Morgan">
+              <dl class="ui-definition">
+                <dt>
+                  Zuletzt aktualisiert
+                </dt>
+                <dd>
+                  <time datetime="2026-09-25T09:42:00Z">25.09.2026, 09:42 UTC</time>
+                </dd>
+                <dt>
+                  Verarbeitete Datensätze
+                </dt>
+                <dd>
+                  1.248,50
+                </dd>
+              </dl>
+              <div class="ui-actions">
+                <button type="button" class="btn btn-secondary ui-enhanced-only" data-ui-message data-confirm-title="Änderungen überprüfen" data-confirm-message="Dies ist eine Vorschau. Es werden keine Daten gespeichert." data-confirm-button="Bestätigen"><i class="bi bi-info-circle" aria-hidden="true"></i>Änderungen an den Benutzereinstellungen überprüfen</button><a class="btn btn-secondary" href="i18n.html">Bearbeitung abbrechen</a>
+              </div>
+            </div>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Translation contract
+            </h2>
+            <p>
+              The host renders translated strings and sets the document language. Shared JavaScript only transfers them into components.
+            </p>
+            <dl class="ui-definition">
+              <dt>
+                Message key
+              </dt>
+              <dd>
+                <code>common.save</code>
+              </dd>
+              <dt>
+                English
+              </dt>
+              <dd lang="en">
+                Save changes
+              </dd>
+              <dt>
+                Japanese
+              </dt>
+              <dd lang="ja">
+                変更を保存
+              </dd>
+              <dt>
+                Encoding
+              </dt>
+              <dd>
+                UTF-8
+              </dd>
+              <dt>
+                Pluralization
+              </dt>
+              <dd>
+                Host translation runtime
+              </dd>
+            </dl>
+            <div lang="ja">
+              <div class="alert alert-warning" role="status">
+                <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <strong>変更は保存されていません。</strong> 別の管理者によって構成が更新されました。最新の内容を確認してから、もう一度保存してください。
+              </div>
+            </div>
+          </section>
+        </div>
+        <section lang="ja" class="ui-example">
+          <h2>
+            日本語のテーブルと検索フォーム
+          </h2>
+          <form method="get" action="users.html" class="ui-toolbar">
+            <div class="ui-search">
+              <label class="form-label" for="ja-q">ユーザー名またはメールアドレス</label><input class="form-control" type="search" id="ja-q" name="q" value="田中">
+            </div>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-search" aria-hidden="true"></i>検索</button>
+          </form>
+          <div class="ui-table-wrap" tabindex="0" role="region" aria-label="日本語表示の検証">
+            <table class="table" >
+              <caption class="visually-hidden">日本語表示の検証</caption>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    ユーザー名
+                  </th>
+                  <th scope="col">
+                    状態
+                  </th>
+                  <th scope="col">
+                    最終更新日時
+                  </th>
+                  <th scope="col">
+                    説明
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    田中 美咲
+                  </td>
+                  <td>
+                    <span class="ui-status ui-status-success">有効</span>
+                  </td>
+                  <td>
+                    2026年9月25日 18:42
+                  </td>
+                  <td>
+                    管理対象の構成とアクセス権限を確認する担当者です。
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <footer class="ui-footer">
+          <span>WebUI Design Lab · Reference implementation</span><span>Fictional data · Gray / Comfortable · Snapshot Sep 25, 2026</span>
+        </footer>
+      </main>
+    </div>
+    <div class="modal fade" id="ui-dialog" tabindex="-1" aria-labelledby="ui-dialog-title" aria-describedby="ui-dialog-message">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="ui-dialog-title" data-dialog-title>
+            </h2>
+          </div>
+          <div class="modal-body" id="ui-dialog-message" data-dialog-message>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-dialog-cancel>Cancel</button><button type="button" class="btn btn-primary" data-dialog-accept>OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" aria-live="polite" aria-atomic="true">
+      <div class="toast" id="ui-toast" role="status">
+        <div class="d-flex">
+          <div class="toast-body">
+          </div>
+          <button type="button" class="btn-close me-3 m-auto" data-bs-dismiss="toast" aria-label="Dismiss notification"></button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

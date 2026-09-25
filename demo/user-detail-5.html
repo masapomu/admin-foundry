@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" data-ui-theme="gray" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="Offline administration UI reference, server-rendered HTML first.">
+    <title>User details · WebUI Design Lab</title>
+    <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../assets/css/admin-ui.css">
+    <script defer src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script><script defer src="../assets/js/admin-ui.js"></script><script defer src="../assets/js/reference-demo.js"></script>
+  </head>
+  <body>
+    <a class="ui-skip" href="#main">Skip to content</a>
+    <header class="ui-header">
+      <button type="button" class="btn btn-link ui-icon-btn ui-mobile-toggle" data-ui-sidebar aria-controls="ui-sidebar" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list" aria-hidden="true"></i></button><a class="ui-brand" href="dashboard.html"><span class="ui-brand-mark"><i class="bi bi-intersect" aria-hidden="true"></i></span>Acme Operations</a>
+      <div class="ui-header-meta">
+        <span>Workspace</span><i class="bi bi-chevron-right" aria-hidden="true"></i><strong>Administration</strong><span class="ui-status">Reference</span>
+      </div>
+      <div class="ui-header-end">
+        <a href="i18n.html" class="btn btn-link"><i class="bi bi-translate" aria-hidden="true"></i><span>EN / 日本語</span></a><span class="ui-account-label ui-small">Alex Morgan</span><span class="ui-avatar" aria-label="Alex Morgan">AM</span>
+      </div>
+    </header>
+    <div class="ui-shell">
+      <aside class="ui-sidebar" id="ui-sidebar">
+        <div>
+          <p class="ui-nav-label">
+            Workspace
+          </p>
+          <nav class="ui-nav" aria-label="Workspace">
+            <a href="dashboard.html" ><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Overview</span></a><a href="users.html" aria-current="page"><i class="bi bi-people" aria-hidden="true"></i><span>Users</span></a><a href="system.html" ><i class="bi bi-hdd-stack" aria-hidden="true"></i><span>System</span></a><a href="logs.html" ><i class="bi bi-list-ul" aria-hidden="true"></i><span>Activity logs</span></a>
+          </nav>
+        </div>
+        <div>
+          <p class="ui-nav-label">
+            Design reference
+          </p>
+          <nav class="ui-nav" aria-label="Design reference">
+            <a href="forms.html" ><i class="bi bi-sliders2" aria-hidden="true"></i><span>Forms</span></a><a href="components.html" ><i class="bi bi-grid" aria-hidden="true"></i><span>Components</span></a><a href="patterns.html" ><i class="bi bi-layers" aria-hidden="true"></i><span>State patterns</span></a><a href="i18n.html" ><i class="bi bi-translate" aria-hidden="true"></i><span>Internationalization</span></a>
+          </nav>
+        </div>
+        <div class="ui-sidebar-foot">
+          <strong>WebUI Design Lab</strong>
+          <p class="mb-2">
+            Foundation / 0.1
+          </p>
+          <span><i class="bi bi-circle-fill" aria-hidden="true"></i> Local assets · Offline ready</span>
+        </div>
+      </aside>
+      <main class="ui-main" id="main" tabindex="-1">
+        <div class="ui-breadcrumb">
+          Workspace <i class="bi bi-chevron-right" aria-hidden="true"></i> <span>User details</span>
+        </div>
+        <div class="ui-page-header">
+          <div>
+            <h1>
+              User details
+            </h1>
+            <p>
+              Read-only, full-page fallback for the offcanvas pattern.
+            </p>
+          </div>
+          <div class="ui-actions">
+            <a class="btn btn-secondary" href="users.html"><i class="bi bi-arrow-left" aria-hidden="true"></i>Back to users</a>
+          </div>
+        </div>
+        <noscript>
+          <div class="alert alert-info">
+            All reference content is available. Interactive previews require JavaScript; search and POST processing belong to the host application.
+          </div>
+        </noscript>
+        <p class="ui-note">
+          Read-only fictional user record.
+        </p>
+        <div class="ui-panel">
+          <dl class="ui-definition">
+            <dt>
+              Display name
+            </dt>
+            <dd>
+              Priya Taylor
+            </dd>
+            <dt>
+              Email
+            </dt>
+            <dd>
+              priya.taylor@example.test
+            </dd>
+            <dt>
+              Role
+            </dt>
+            <dd>
+              Operator
+            </dd>
+            <dt>
+              Status
+            </dt>
+            <dd>
+              <span class="ui-status ui-status-success">Enabled</span>
+            </dd>
+            <dt>
+              User ID
+            </dt>
+            <dd>
+              <code id="user-id">usr_ref_005</code> <button type="button" class="btn btn-link ui-icon-btn ui-enhanced-only" data-ui-copy="#user-id" data-copy-success="User ID copied." data-copy-error="Copy unavailable. Select and copy the ID manually." aria-label="Copy user ID"><i class="bi bi-copy" aria-hidden="true"></i></button>
+            </dd>
+            <dt>
+              Created
+            </dt>
+            <dd>
+              <time datetime="2026-08-12T10:00:00Z">Aug 12, 2026, 10:00 UTC</time>
+            </dd>
+            <dt>
+              Access scope
+            </dt>
+            <dd>
+              Reference workspace
+            </dd>
+          </dl>
+        </div>
+        <footer class="ui-footer">
+          <span>WebUI Design Lab · Reference implementation</span><span>Fictional data · Gray / Comfortable · Snapshot Sep 25, 2026</span>
+        </footer>
+      </main>
+    </div>
+    <div class="modal fade" id="ui-dialog" tabindex="-1" aria-labelledby="ui-dialog-title" aria-describedby="ui-dialog-message">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="ui-dialog-title" data-dialog-title>
+            </h2>
+          </div>
+          <div class="modal-body" id="ui-dialog-message" data-dialog-message>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-dialog-cancel>Cancel</button><button type="button" class="btn btn-primary" data-dialog-accept>OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" aria-live="polite" aria-atomic="true">
+      <div class="toast" id="ui-toast" role="status">
+        <div class="d-flex">
+          <div class="toast-body">
+          </div>
+          <button type="button" class="btn-close me-3 m-auto" data-bs-dismiss="toast" aria-label="Dismiss notification"></button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
