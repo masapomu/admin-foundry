@@ -123,4 +123,13 @@ Bootstrapの控えめなtransitionのみ。prefers-reduced-motionではanimation
 比較用のDarkは`data-ui-theme="dark"`と`data-bs-theme="dark"`を組み合わせる。surface/text/border/brand/action/semanticを暗色用tokenへ切り替え、フォーム・ダイアログなどBootstrap部品も暗色で描画する。静的デモはページ描画前にURLの`theme=dark`を適用する。標準はGrayのままで、OS設定による自動切り替えは行わない。
 
 ## 36. Visual anti-patterns
+
+Chartの規約は次節と[CHARTS.md](CHARTS.md)も参照。
 標準Bootstrap dashboardの流用、巨大KPI、強いshadow、glass、gradient、pill多用、色付きアイコン円、装飾chart、全sectionカード化、SPA化を避ける。VISUAL-ANTI-PATTERNS.mdを参照。
+
+## 37. Visualization
+Chart.js 4.5.1はCore dependencyではなく**Optional Visualization Dependency**。Trend / Comparison / Compositionが数値や表より理解しやすくなる場合だけ使用。Line / Bar / Doughnut / Mini trendを標準とし、その他の種類は標準化しない。
+
+`charts.css`の`--ui-chart-grid/axis/label`、`--ui-chart-tooltip-bg/text`、`--ui-chart-series-1`〜`5`、surface、高さtokensを使用。Standard280px、Compact200px、Mini56px。系列paletteをbrand/semantic色から分離し、Dark用にも切り替える。危険操作の赤を無意味な系列色として使わない。
+
+Serverが安全にJSONと翻訳文をHTMLへ埋め込み、Vanilla JSが描画する。初回SSRとManual Refreshが標準。Chart objectの更新は`update('none')`で行い、失敗はpanel内に限定する。HTML title/summary/legend/tableを提供し、重要情報をcanvasやtooltipだけに閉じ込めない。サイズ、i18n、timezone、format、状態、motionの詳細は[CHARTS.md](CHARTS.md)。

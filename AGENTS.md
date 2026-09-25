@@ -13,3 +13,5 @@
 - Do not introduce product-specific states, backend services, Skill/Plugin packaging or publishing in this sprint.
 
 Detailed contracts live in `docs/`.
+
+- Charts are optional. Add them only when they improve comprehension; follow `docs/CHARTS.md`.

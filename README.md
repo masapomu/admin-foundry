@@ -20,6 +20,7 @@
 | [Logs](demo/logs.html) | 20行のログ、長文、日本語、レベル、日時フィルター |
 | [Forms](demo/forms.html) | POST形式、ラベル、検証エラー、標準入力、flash、未保存警告 |
 | [Components](demo/components.html) | Bootstrap部品と共通の用途・見た目 |
+| [Charts](demo/charts.html) | Optional Chart.js: Line / Bar / Doughnut / Mini、状態、日本語、元データ表 |
 | [Patterns](demo/patterns.html) | 読み込み、失敗、競合、権限、読み取り専用など16状態 |
 | [i18n](demo/i18n.html) | English / 日本語 / 長いドイツ語訳の比較 |
 | [Personal settings](demo/account.html) | 右上のアカウントメニューから開くプロフィール・表示設定のプレビュー |
@@ -29,27 +30,31 @@
 ```text
 README.md / AGENTS.md / .gitignore / .gitattributes
 docs/
-  DESIGN-SYSTEM.md       COMPONENTS.md
+  DESIGN-SYSTEM.md       COMPONENTS.md / CHARTS.md
   SERVER-RENDERED-PATTERNS.md  I18N.md
   ACCESSIBILITY.md       VISUAL-ANTI-PATTERNS.md
   VALIDATION.md          THIRD-PARTY.md
 demo/
   index.html / dashboard.html / users.html / system.html
   logs.html / forms.html / components.html / patterns.html / i18n.html
-  account.html
+  account.html / charts.html
   users-page-2.html / user-detail*.html / result.html
 assets/
-  css/admin-ui.css
-  js/admin-ui.js / reference-demo.js
+  css/admin-ui.css / charts.css (optional)
+  js/admin-ui.js / reference-demo.js / theme-init.js / admin-charts.js (optional)
   favicon.svg
   vendor/bootstrap/       # 5.3.8, CSS + JS bundle + licenses/maps
   vendor/bootstrap-icons/ # 1.13.1, CSS + fonts + license
+  vendor/chartjs/         # 4.5.1, optional UMD + source map + licenses
 tests/static-check.mjs    # Optional maintainer verification only
+tests/charts-check.mjs    # Optional chart adapter verification
 ```
 
 ## 技術とアーキテクチャ
 
 HTML5 / UTF-8 / CSS Variables / Bootstrap 5.3.8 / Bootstrap Icons 1.13.1 / Vanilla JavaScript / system fonts。
+
+CoreはBootstrap / Bootstrap Icons / Vanilla JavaScript。**Optional: Chart.js 4.5.1 (MIT)** はグラフのある`charts.html`と`dashboard.html`だけがローカルUMDを読み込みます。`assets/css/charts.css`と`assets/js/admin-charts.js`もページ単位です。Server-rendered JSONから描画し、実行時のNodeやAPI取得は不要。[Chart規約](docs/CHARTS.md)を参照してください。
 
 画面とテーブルは静的HTMLにすべて含まれます。SPA、ルーター、hydration、JSON API、fetch、ストアはありません。Bootstrapはレイアウト・部品・動作の土台で、独自CSSレイヤーが見た目を定義します。
 
@@ -75,3 +80,5 @@ i18nは必須です。翻訳ランタイムには依存しません。文言・�
 今後は人間の評価後に視覚・操作を調整し、設計資産をSkill、skills-only Plugin、再利用可能なGitHub資産へ抽出できます。このSprintではパッケージ化・公開・次のiterationは行いません。
 
 任意の保守チェックは `node tests/static-check.mjs`。依存インストール不要で、ローカル参照・ARIA/inputラベル・コントラストを確認します。これは開発時の補助であり、Reference Siteの実行にNodeは必要ありません。
+
+Chartの任意チェックは`node tests/charts-check.mjs`。不正/欠損JSON、Empty、locale整形、instance更新、部分失敗、Optionalロード範囲を確認します。

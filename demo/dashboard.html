@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../assets/css/admin-ui.css">
     <script defer src="../assets/vendor/bootstrap/bootstrap.bundle.min.js"></script><script defer src="../assets/js/admin-ui.js"></script><script defer src="../assets/js/reference-demo.js"></script>
+    <link rel="stylesheet" href="../assets/css/charts.css">
+    <script defer src="../assets/vendor/chartjs/chart.umd.min.js"></script><script defer src="../assets/js/admin-charts.js"></script>
   </head>
   <body>
     <a class="ui-skip" href="#main">Skip to content</a>
@@ -48,7 +50,7 @@
             Design reference
           </p>
           <nav class="ui-nav" aria-label="Design reference">
-            <a href="forms.html" ><i class="bi bi-sliders2" aria-hidden="true"></i><span>Forms</span></a><a href="components.html" ><i class="bi bi-grid" aria-hidden="true"></i><span>Components</span></a><a href="patterns.html" ><i class="bi bi-layers" aria-hidden="true"></i><span>State patterns</span></a><a href="i18n.html" ><i class="bi bi-translate" aria-hidden="true"></i><span>Internationalization</span></a>
+            <a href="forms.html" ><i class="bi bi-sliders2" aria-hidden="true"></i><span>Forms</span></a><a href="components.html" ><i class="bi bi-grid" aria-hidden="true"></i><span>Components</span></a><a href="charts.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Charts</span></a><a href="patterns.html" ><i class="bi bi-layers" aria-hidden="true"></i><span>State patterns</span></a><a href="i18n.html" ><i class="bi bi-translate" aria-hidden="true"></i><span>Internationalization</span></a>
           </nav>
         </div>
         <div class="ui-sidebar-foot">
@@ -131,6 +133,22 @@
         <div class="alert alert-warning" role="status">
           <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <strong>One service needs attention.</strong> Service Gamma is approaching its memory threshold. <a href="system.html">Review system status</a>
         </div>
+        <figure class="ui-chart-panel" data-chart-panel >
+ <figcaption><h2 id="sessions-chart-title">Active sessions — last 24 hours</h2><p id="sessions-chart-summary">Latest snapshot: 58 sessions. Peak: 112 at 12:00 UTC; overnight low: 28. Four-hourly trend checkpoints complement the current KPIs.</p></figcaption>
+
+ <p class="ui-note" data-chart-fallback>The summary remains available when the chart cannot be displayed.</p>
+ <div class="ui-chart-frame ui-chart-compact" hidden><canvas id="sessions-chart" data-ui-chart="line" data-chart-source="#sessions-chart-data" role="img" aria-labelledby="sessions-chart-title" aria-describedby="sessions-chart-summary"></canvas></div>
+ <div class="ui-chart-state" data-chart-empty hidden><i class="bi bi-bar-chart" aria-hidden="true"></i><p>No data available.</p></div>
+ <div class="alert alert-danger" role="status" data-chart-error hidden>This chart could not be displayed. Other information is still available. <a href="dashboard.html">Reload page</a></div>
+ <details><summary>View source data</summary><div class="ui-table-wrap" role="region" tabindex="0" aria-label="Active sessions — last 24 hours"><table class="table"><caption class="visually-hidden">Active sessions — last 24 hours</caption><thead><tr><th scope="col">Time / category</th><th scope="col">Active sessions</th></tr></thead><tbody><tr><th scope="row">00:00</th><td>42</td></tr>
+<tr><th scope="row">04:00</th><td>28</td></tr>
+<tr><th scope="row">08:00</th><td>65</td></tr>
+<tr><th scope="row">12:00</th><td>112</td></tr>
+<tr><th scope="row">16:00</th><td>96</td></tr>
+<tr><th scope="row">20:00</th><td>74</td></tr>
+<tr><th scope="row">24:00</th><td>58</td></tr></tbody></table></div></details><div class="ui-chart-meta"><span>Last updated: Sep 25, 2026 · 00:00 UTC</span><a href="dashboard.html">Refresh</a></div>
+ <script type="application/json" id="sessions-chart-data">{"locale":"en-US","labels":["00:00","04:00","08:00","12:00","16:00","20:00","24:00"],"datasets":[{"label":"Active sessions","data":[42,28,65,112,96,74,58]}],"format":{"maximumFractionDigits":0},"categoryAxis":"Sep 24 · UTC","valueAxis":"Sessions"}</script>
+ </figure>
         <div class="ui-grid">
           <div>
             <section class="ui-section">

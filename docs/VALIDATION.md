@@ -1,5 +1,18 @@
 # Initial sprint validation
 
+## Chart visualization follow-up — 2026-09-26
+
+- Chart.js 4.5.1 UMDを公式npm packageから取得。MIT本体と内包@kurkle/color 0.3.2のMIT notice、ローカルsource mapを保持。ハッシュはTHIRD-PARTY.md。
+- `node --check assets/js/admin-charts.js`、`node tests/charts-check.mjs`、`node tests/static-check.mjs`を実施。22ページ・713ローカル参照・既存24色組がPASS。Chart paletteもlight/darkの5色すべてsurfaceに対して3:1以上、tooltip文字4.5:1以上。
+- adapter testsで4種類、Empty/zero/null、欠損source、malformed JSON、型/長さ不正、ライブラリ不在、部分失敗、instance再利用、update('none')、更新失敗時の前データ維持、locale/percent/decimal/compact/GiB/duration整形、任意options非転送、Optionalロード範囲を確認。
+- ブラウザーでGray/Dark、Line/Bar/Doughnut/Mini、長いカテゴリラベル、HTML legend、英日tooltip、Loading/Empty/Error、日本語/JST表示を目視。1280pxと390pxでresizeと横はみ出しなしを確認。元データ表は表示精度を落とさず、compact表記は軸/tooltipに限定した。
+- DashboardはCompact lineを1つ追加し、KPIと表・状態とのバランスを確認。Systemはchartを増やさず、ナビゲーションのChartsリンクのみ追加。
+- 通常のCharts/Dashboardでconsole error/warningなし。animationは常時false、更新もnoneで、reduced-motionの有無によらず動かない。Loading spinnerは既存のreduced-motion CSS対象。
+- localhostのCSP `default-src 'self' data:; script-src 'self'; connect-src 'none'`で外部取得を禁止した状態で全chartが描画。静的参照検査でも外部assetなし。file URLの実ブラウザー確認はブラウザー操作ポリシーにより不可だったため、外部通信禁止のlocalhostで検証した。OSのネットワーク切断は実施していない。
+- `qa_nojs=1`でscript-src 'none'にし、canvasを表示せず要約と元データ表が残ること、Enterで表を展開できることを確認。この条件でのCSP script-blockメッセージは意図したもの。
+
+視覚調整: 折り返すHTML legend、長いbar labelの意味単位での改行、Dark用series/tooltip palette、標準280px・compact200px・mini56pxの親コンテナを採用。Safari/Firefox・実スクリーンリーダー・200% zoomは未検証。別library/実API/polling/export/Skill化は実装していない。
+
 ## Environment and scope
 
 Codex in-app Chromium browserでlocalhost静的配信を使用。製品backend、API、DBは使っていない。実装はHTMLファイルとして完結し、検証用server/authoring scriptは `.work/` の未追跡scratchのみ。

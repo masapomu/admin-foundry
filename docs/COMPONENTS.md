@@ -1,6 +1,21 @@
 # Component usage
 
+## Optional charts
+
+Chart.jsはCoreではなく、グラフが必要なページだけがロードするOptional Visualization Dependency。[CHARTS.md](CHARTS.md)が詳細契約。
+
+- Trend / Comparison / Compositionの理解が改善する場合だけ使用。装飾や空間埋めには使わず、number / table / status / progressを優先する。
+- Line: CPU/Memoryなどの時系列。同じ単位を使い、系列は線種・点形状・ラベルでも区別する。
+- Bar: category比較やTop-N。0基準の水平barと折り返す長いラベル。
+- Doughnut: Used / Free等の少数構成比。合計・値・割合をHTMLにも表示し、多用しない。
+- Mini trend: KPIの傾向を56pxのlineで補足。数値と期間・変化の説明を併記する。
+- Loading: 初回のみspinner+翻訳文。背景更新中は既存chartと最終更新日時を残す。
+- Empty: 空軸を出さず翻訳済み説明を表示。Error: 不正/欠損JSONやライブラリ不在をpanel内に閉じ込め、通常リンクで再読み込みできる。
+- `.ui-chart-panel` / `.ui-chart-frame`と`data-ui-chart` / `data-chart-source`を使い、hostが安全にJSON・summary・legend・tableを描画する。Tooltipはcanvas text、legendは折り返すHTML list。JSなしでも重要情報を読むことができる。
+
 Bootstrapのclass/APIを維持し、`admin-ui.css` で視覚を統一する。デモのcomponent menuから各例へ移動できる。
+
+## Core components
 
 | Component | When to use | When not to use / 注意 |
 |---|---|---|
