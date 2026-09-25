@@ -34,6 +34,17 @@ Skillは**Design**、**Implement**、**Review**に対応します。作業に関
 
 プロジェクトの事実情報は英語版 [README.md](README.md) を正本とします。変更時には、この日本語版も意味が揃うよう更新してください。
 
+### Codexへのインストール
+
+このリポジトリには、GitHub上のAdminFoundryをインストールするための小さな[登録カタログ](.agents/plugins/marketplace.json)を同梱しています。配布・動作確認用のカタログであり、公式公開Pluginディレクトリへの掲載ではありません。
+
+```text
+codex plugin marketplace add masapomu/admin-foundry --ref main
+codex plugin add admin-foundry@admin-foundry-local
+```
+
+インストール後に新しいCodexタスクを開始すると、`server-rendered-admin-ui` Skillを利用できます。後でリポジトリを更新した場合は、カタログを更新してPluginを再インストールしてください。
+
 ### 利用例
 
 **Design**

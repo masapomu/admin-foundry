@@ -1,0 +1,21 @@
+{
+  "name": "admin-foundry-local",
+  "interface": {
+    "displayName": "AdminFoundry (Local)"
+  },
+  "plugins": [
+    {
+      "name": "admin-foundry",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/masapomu/admin-foundry.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

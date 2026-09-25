@@ -34,6 +34,17 @@ The skill supports **Design**, **Implement**, and **Review** workflows. It route
 
 This English README is the canonical source for project facts. Keep [README.ja.md](README.ja.md) semantically aligned when those facts change.
 
+### Install in Codex
+
+This repository includes a small [marketplace catalog](.agents/plugins/marketplace.json) for installing AdminFoundry from its GitHub repository. It is a distribution and testing catalog, not a listing in the official public Plugins Directory.
+
+```text
+codex plugin marketplace add masapomu/admin-foundry --ref main
+codex plugin add admin-foundry@admin-foundry-local
+```
+
+Start a new Codex task after installation so the `server-rendered-admin-ui` skill is available. Future repository changes can be picked up by refreshing the marketplace and reinstalling the plugin.
+
 ### Example prompts
 
 **Design**
