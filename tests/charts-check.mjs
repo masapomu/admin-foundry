@@ -4,8 +4,10 @@ import {readFileSync,readdirSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import vm from 'node:vm';
 const require=createRequire(import.meta.url);
-assert.equal(require('../assets/vendor/chartjs/chart.umd.min.js').version,'4.5.1');
-const code=readFileSync('assets/js/admin-charts.js','utf8');
+const assetRoot='skills/server-rendered-admin-ui/assets';
+const pageRoot=`${assetRoot}/reference-ui`;
+assert.equal(require(`../${assetRoot}/vendor/chartjs/chart.umd.min.js`).version,'4.5.1');
+const code=readFileSync(`${assetRoot}/js/admin-charts.js`,'utf8');
 assert(!/\b(?:fetch|XMLHttpRequest|WebSocket|EventSource)\s*\(/.test(code));
 const valid={labels:['10:00','10:10'],datasets:[{label:'CPU',data:[.22,.28]}],locale:'en-US',format:{style:'percent',maximumFractionDigits:0}};
 function fixture(type='line',data=valid,{missing=false,raw=false,library=true,fail=false}={}) {
@@ -52,23 +54,29 @@ assert.equal(ja.chart.options.plugins.tooltip.callbacks.label({dataset:{label:'C
 for(const [format,value,expected] of [[{maximumFractionDigits:0},1248,'1,248'],[{maximumFractionDigits:1},12.34,'12.3'],[{notation:'compact'},12000,'12K'],[{maximumFractionDigits:0,suffix:' GiB'},640,'640 GiB'],[{style:'unit',unit:'millisecond'},12,'12 ms']]) {
  const f=fixture('line',{...valid,format});assert.equal(f.chart.options.scales.y.ticks.callback(value),expected);
 }
-for(const name of readdirSync('demo').filter(n=>n.endsWith('.html'))) {
- const html=readFileSync('demo/'+name,'utf8'),hasCharts=['charts.html','dashboard.html'].includes(name);
- assert.equal(html.includes('src="../assets/vendor/chartjs/chart.umd.min.js"'),hasCharts,name);
- assert.equal(html.includes('src="../assets/js/admin-charts.js"'),hasCharts,name);
+for(const name of readdirSync(pageRoot).filter(n=>n.endsWith('.html'))) {
+ const html=readFileSync(`${pageRoot}/${name}`,'utf8'),hasCharts=['charts.html','dashboard.html'].includes(name);
+ assert.equal(html.includes('src="../vendor/chartjs/chart.umd.min.js"'),hasCharts,name);
+ assert.equal(html.includes('src="../js/admin-charts.js"'),hasCharts,name);
  if(hasCharts)for(const m of html.matchAll(/<script type="application\/json" id="([^"]+)">([\s\S]*?)<\/script>/g)) {
    if(m[1]==='error-chart-data'){assert.throws(()=>JSON.parse(m[2]));continue;}
    const data=JSON.parse(m[2]);assert(!m[2].includes('<'));assert(data.labels);assert(data.datasets);
  }
 }
-for(const file of ['LICENSE.md','COLOR-LICENSE.md'])assert.match(readFileSync('assets/vendor/chartjs/'+file,'utf8'),/Permission is hereby granted/);
-assert(readFileSync('assets/vendor/chartjs/chart.umd.min.js.map','utf8').includes('sourcesContent'));
-const chartCss=readFileSync('assets/css/charts.css','utf8');
+for(const file of ['LICENSE.md','COLOR-LICENSE.md'])assert.match(readFileSync(`${assetRoot}/vendor/chartjs/${file}`,'utf8'),/Permission is hereby granted/);
+assert(readFileSync(`${assetRoot}/vendor/chartjs/chart.umd.min.js.map`,'utf8').includes('sourcesContent'));
+const chartCss=readFileSync(`${assetRoot}/css/charts.css`,'utf8');
 const luminance=hex=>hex.slice(1).match(/../g).map(v=>parseInt(v,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);
 const ratio=(a,b)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);};
 for(const [block,surface] of [[chartCss.match(/:root\s*\{([^}]+)\}/)[1],'#ffffff'],[chartCss.match(/\[data-ui-theme="dark"\]\s*\{([^}]+)\}/)[1],'#20262e']]) {
  for(const match of block.matchAll(/--ui-chart-series-\d:(#[a-f0-9]{6})/g))assert(ratio(match[1],surface)>=3,'Chart line contrast');
  const bg=block.match(/--ui-chart-tooltip-bg:(#[a-f0-9]{6})/)[1],fg=block.match(/--ui-chart-tooltip-text:(#[a-f0-9]{6})/)[1];
  assert(ratio(bg,fg)>=4.5,'Tooltip text contrast');
+}
+for(const theme of ['sapphire-blue','garnet-red','aqua-ivory']) {
+ const block=chartCss.match(new RegExp(`\\[data-ui-theme="${theme}"\\]\\s*\\{([^}]+)\\}`))?.[1];
+ assert(block,`${theme} chart palette`);
+ assert(ratio(block.match(/--ui-chart-tooltip-bg:(#[a-f0-9]{6})/)[1],'#f7f9fc')>=4.5,`${theme} tooltip text contrast`);
+ for(const match of block.matchAll(/--ui-chart-series-\d:(#[a-f0-9]{6})/g))assert(ratio(match[1],'#ffffff')>=3,`${theme} chart line contrast`);
 }
 console.log('PASS: Chart.js 4.5.1, four types, empty/zero/null, malformed/missing source, unavailable library, isolated failure, instance update/stale retention, locale/formatting, safe options, optional loading, local licenses/map.');

@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en" data-ui-theme="graphite-blue" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Offline administration UI reference, server-rendered HTML first.">
+    <title>State patterns · AdminFoundry</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <script src="../js/theme-init.js"></script>
+    <link rel="stylesheet" href="../vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/admin-ui.css">
+    <script defer src="../vendor/bootstrap/bootstrap.bundle.min.js"></script><script defer src="../js/admin-ui.js"></script><script defer src="../js/reference-demo.js"></script>
+  </head>
+  <body>
+    <a class="ui-skip" href="#main">Skip to content</a>
+    <header class="ui-header">
+      <button type="button" class="btn btn-link ui-icon-btn ui-mobile-toggle" data-ui-sidebar aria-controls="ui-sidebar" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list" aria-hidden="true"></i></button><a class="ui-brand" href="dashboard.html"><span class="ui-brand-mark"><i class="bi bi-intersect" aria-hidden="true"></i></span>Acme Operations</a>
+      <div class="ui-header-meta">
+        <span>Workspace</span><i class="bi bi-chevron-right" aria-hidden="true"></i><strong>Administration</strong><span class="ui-status">Reference</span>
+      </div>
+      <div class="ui-header-end">
+        <a href="i18n.html" class="btn btn-link"><i class="bi bi-translate" aria-hidden="true"></i><span>EN / 日本語</span></a>
+        <details class="ui-account-menu">
+          <summary class="ui-account-trigger" aria-label="Account menu for Alex Morgan"><span class="ui-avatar" aria-hidden="true">AM</span><span class="ui-account-label">Alex Morgan</span><i class="bi bi-list" aria-hidden="true"></i></summary>
+          <div class="ui-account-popover">
+            <div class="ui-account-identity"><strong>Alex Morgan</strong><span>alex.morgan@example.test</span></div>
+            <a class="ui-account-item" href="account.html"><i class="bi bi-person" aria-hidden="true"></i>Personal settings</a>
+            <button type="button" class="ui-account-item ui-account-signout ui-enhanced-only" data-ui-message data-confirm-title="Sign out preview" data-confirm-message="This is a static reference. No account session was ended." data-confirm-button="OK"><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</button>
+            <a class="ui-account-item ui-account-signout ui-nojs" href="account.html#sign-out"><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</a>
+          </div>
+        </details>
+      </div>
+    </header>
+    <div class="ui-shell">
+      <aside class="ui-sidebar" id="ui-sidebar">
+        <div>
+          <p class="ui-nav-label">
+            Workspace
+          </p>
+          <nav class="ui-nav" aria-label="Workspace">
+            <a href="dashboard.html" ><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Overview</span></a><a href="users.html" ><i class="bi bi-people" aria-hidden="true"></i><span>Users</span></a><a href="system.html" ><i class="bi bi-hdd-stack" aria-hidden="true"></i><span>System</span></a><a href="logs.html" ><i class="bi bi-list-ul" aria-hidden="true"></i><span>Activity logs</span></a>
+          </nav>
+        </div>
+        <div>
+          <p class="ui-nav-label">
+            Design reference
+          </p>
+          <nav class="ui-nav" aria-label="Design reference">
+            <a href="forms.html" ><i class="bi bi-sliders2" aria-hidden="true"></i><span>Forms</span></a><a href="components.html" ><i class="bi bi-grid" aria-hidden="true"></i><span>Components</span></a><a href="charts.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Charts</span></a><a href="patterns.html" aria-current="page"><i class="bi bi-layers" aria-hidden="true"></i><span>State patterns</span></a><a href="i18n.html" ><i class="bi bi-translate" aria-hidden="true"></i><span>Internationalization</span></a>
+          </nav>
+        </div>
+        <div class="ui-sidebar-foot">
+          <strong>AdminFoundry</strong>
+          <p class="mb-2">
+            Foundation / 0.1
+          </p>
+          <span><i class="bi bi-circle-fill" aria-hidden="true"></i> Local assets · Offline ready</span>
+        </div>
+      </aside>
+      <main class="ui-main" id="main" tabindex="-1">
+        <div class="ui-breadcrumb">
+          Workspace <i class="bi bi-chevron-right" aria-hidden="true"></i> <span>State patterns</span>
+        </div>
+        <div class="ui-theme-preview" role="group" aria-label="Color theme preview"><span>Theme preview</span><a href="?theme=graphite-blue" data-demo-theme="graphite-blue" aria-current="true">Graphite Blue</a><a href="?theme=sapphire-blue" data-demo-theme="sapphire-blue">Sapphire Blue</a><a href="?theme=garnet-red" data-demo-theme="garnet-red">Garnet Red</a><a href="?theme=aqua-ivory" data-demo-theme="aqua-ivory">Aqua Ivory</a><a href="?theme=dark" data-demo-theme="dark">Dark</a></div>
+        <div class="ui-page-header">
+          <div>
+            <h1>
+              State patterns
+            </h1>
+            <p>
+              Explicit states for predictable operations, including when things go wrong.
+            </p>
+          </div>
+          <div class="ui-actions">
+            <button type="button" class="btn btn-secondary ui-enhanced-only" data-ui-message data-confirm-title="Static reference" data-confirm-message="This is a local interaction preview. No request is sent and no data is saved." data-confirm-button="OK"><i class="bi bi-info-circle" aria-hidden="true"></i>About this preview</button>
+          </div>
+        </div>
+        <noscript>
+          <div class="alert alert-info">
+            All reference content is available. Interactive previews require JavaScript; search and POST processing belong to the host application.
+          </div>
+        </noscript>
+        <div class="ui-two">
+          <section class="ui-example">
+            <h2>
+              Loading
+            </h2>
+            <div role="status">
+              <span class="spinner-border spinner-border-sm" aria-hidden="true"></span> Loading records…
+            </div>
+            <p class="ui-note mt-2">
+              Initial load only. Keep the surrounding page usable.
+            </p>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Refreshing
+            </h2>
+            <div class="ui-actions">
+              <span class="ui-status ui-status-info">Refreshing</span><span>Service Alpha · Healthy</span>
+            </div>
+            <p class="ui-note mt-2">
+              Previous data stays visible. Last updated 09:42 UTC.
+            </p>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Processing
+            </h2>
+            <div role="status">
+              <span class="spinner-border spinner-border-sm" aria-hidden="true"></span> Waiting for acknowledgement…
+            </div>
+            <p class="ui-note mt-2">
+              No percentage without measured progress.
+            </p>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Success
+            </h2>
+            <div class="alert alert-success" role="status">
+              <i class="bi bi-info-circle" aria-hidden="true"></i> <strong>Operation completed.</strong> Rendered response example; the server is authoritative.
+            </div>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Empty
+            </h2>
+            <div class="ui-empty">
+              <i class="bi bi-inbox" aria-hidden="true"></i>
+              <h3>
+                No resources yet
+              </h3>
+              <p>
+                Create a resource to get started.
+              </p>
+              <a class="btn btn-secondary" href="forms.html"><i class="bi bi-plus-lg" aria-hidden="true"></i>Create resource</a>
+            </div>
+          </section>
+          <section class="ui-example">
+            <h2>
+              No search results
+            </h2>
+            <div class="ui-empty">
+              <i class="bi bi-search" aria-hidden="true"></i>
+              <h3>
+                No matching records
+              </h3>
+              <p>
+                Try fewer filters or another search.
+              </p>
+              <a class="btn btn-secondary" href="users.html"><i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i>Reset search</a>
+            </div>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Partial failure
+            </h2>
+            <div class="alert alert-warning" role="status">
+              <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <strong>Some sources are unavailable.</strong> Healthy sources remain visible.
+            </div>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Full failure
+            </h2>
+            <div class="alert alert-danger" role="alert">
+              <i class="bi bi-exclamation-circle" aria-hidden="true"></i> <strong>Unable to load this view.</strong> Retry or contact your administrator.
+            </div>
+            <a class="btn btn-secondary" href="patterns.html"><i class="bi bi-arrow-clockwise" aria-hidden="true"></i>Refresh</a>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Disconnected
+            </h2>
+            <span class="ui-status ui-status-danger">Disconnected</span>
+            <p class="ui-note mt-2">
+              Connection lost. Last known data: 09:42 UTC.
+            </p>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Stale
+            </h2>
+            <span class="ui-status ui-status-warning">Stale</span>
+            <p class="ui-note mt-2">
+              Data is older than the host application’s freshness threshold.
+            </p>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Read-only
+            </h2>
+            <label class="form-label" for="readonly-example">Resource ID</label><input class="form-control" id="readonly-example" readonly value="ref_resource_001">
+            <p class="form-text">
+              Readable and selectable, but not editable.
+            </p>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Permission denied
+            </h2>
+            <div class="alert alert-danger" role="alert">
+              <i class="bi bi-exclamation-circle" aria-hidden="true"></i> <strong>You do not have permission.</strong> Request access from a workspace administrator.
+            </div>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Conflict / stale data
+            </h2>
+            <div class="alert alert-warning" role="status">
+              <i class="bi bi-exclamation-triangle" aria-hidden="true"></i> <strong>A newer revision exists.</strong> Your changes were not saved. Reload and review before submitting again.
+            </div>
+            <a class="btn btn-secondary" href="forms.html"><i class="bi bi-arrow-clockwise" aria-hidden="true"></i>Review latest revision</a>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Unsaved changes
+            </h2>
+            <form data-ui-unsaved>
+              <label for="draft" class="form-label">Draft note</label><textarea id="draft" class="form-control" rows="2"></textarea>
+              <p class="form-text">
+                Edit, then follow another page link to preview the browser’s leave warning.
+              </p>
+              <button type="reset" class="btn btn-secondary">Discard draft</button>
+            </form>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Unavailable / disabled
+            </h2>
+            <button type="button" class="btn btn-secondary" disabled>Export unavailable</button>
+            <p class="form-text">
+              The export service is unavailable. Try again later.
+            </p>
+          </section>
+          <section class="ui-example">
+            <h2>
+              Destructive confirmation
+            </h2>
+            <form method="post" action="result.html" data-demo-post="Preview complete. No request was sent and no data was changed." >
+              <button type="submit" name="operation" value="delete" class="btn btn-danger ui-enhanced-only" data-ui-confirm data-confirm-kind="danger" data-confirm-title="Delete resource?" data-confirm-message="The resource and its configuration would be removed. This preview does not delete data." data-confirm-cancel="Cancel" data-confirm-button="Delete resource" ><i class="bi bi-trash3" aria-hidden="true"></i>Delete resource</button>
+              <noscript>
+                <p class="ui-note">
+                  Static preview: POST needs a host application. <a href="result.html">Read the submission contract</a>.
+                </p>
+              </noscript>
+            </form>
+          </section>
+        </div>
+        <footer class="ui-footer">
+          <span>AdminFoundry · Reference implementation</span><span>Fictional data · <span data-demo-theme-name>Graphite Blue</span> / Comfortable · Snapshot Sep 25, 2026</span>
+        </footer>
+      </main>
+    </div>
+    <div class="modal fade" id="ui-dialog" tabindex="-1" aria-labelledby="ui-dialog-title" aria-describedby="ui-dialog-message">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="ui-dialog-title" data-dialog-title>
+            </h2>
+          </div>
+          <div class="modal-body" id="ui-dialog-message" data-dialog-message>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-dialog-cancel>Cancel</button><button type="button" class="btn btn-primary" data-dialog-accept>OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast-container position-fixed ui-toast-container" aria-live="polite" aria-atomic="true">
+      <div class="toast" id="ui-toast" role="status">
+        <div class="d-flex">
+          <div class="toast-body">
+          </div>
+          <button type="button" class="btn-close me-3 m-auto" data-bs-dismiss="toast" aria-label="Dismiss notification"></button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

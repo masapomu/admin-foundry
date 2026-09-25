@@ -1,84 +1,99 @@
-# WebUI Design Lab
+[English](README.md) | [日本語](README.ja.md)
 
-複数の管理ツールで再利用する Administration UI Design System / Reference Implementation の初版です。実際の製品ではなく、架空の **Acme Operations** を使った評価用リファレンスです。
+# AdminFoundry
 
-**Server-rendered HTML を Bootstrap で現代化する**ことを目的にしています。Visual directionは **Modern B2B SaaS Operations Console**、Default Themeは **Graphite Blue**。Graphite shell、明るいcontent面、意味のある青accent、情報密度と整列を優先します。
+Modern admin UI patterns for server-rendered web applications.
 
-## 開き方
+Offline-ready admin UI design system and Codex skill for server-rendered PHP, ASP.NET, and other postback-style web apps. No CDN required.
 
-`demo/index.html` または `demo/dashboard.html` を通常のブラウザーで開いてください。HTML・CSS・JavaScript・アイコンフォントはすべて相対パスで同梱しています。インターネット接続、Node/npm、ビルド、バックエンドは不要です。
+AdminFoundry combines a design system, canonical HTML/CSS/JavaScript reference implementation, and the `server-rendered-admin-ui` skill. It uses Bootstrap 5.3.x and Bootstrap Icons to modernize administration and operations consoles while preserving ordinary server-rendered pages, GET filters, POST forms, and Post/Redirect/Get.
 
-ブラウザーのポリシーにより `file://` や Clipboard API が制限される場合は、任意の静的HTTPサーバーでこのフォルダーをlocalhostへ配信できます。コピー失敗時は手動コピーを案内します。自動検証はlocalhost配信で実施しました。詳細は [検証記録](docs/VALIDATION.md) を参照してください。
+Modern UI does not require React, a SPA, client-side routing, a Node runtime, or a CDN. This project is for PHP, ASP.NET/Razor, Perl, Python, and similar applications that render HTML on the server. JavaScript progressively enhances the page; the host remains responsible for routing, data, authentication, CSRF, validation, and translation.
 
-## Reference pages
+## Core principles
 
-| ページ | 内容 |
-|---|---|
-| [Overview](demo/dashboard.html) | 4 KPI、サービス、最近の操作、概要、空状態、部分エラー |
-| [Users](demo/users.html) | GET検索、ステータス、行メニュー、一括選択、モーダル、詳細、ページング |
-| [System](demo/system.html) | リソース、警告、停止確認、長時間処理、鮮度 |
-| [Logs](demo/logs.html) | 20行のログ、長文、日本語、レベル、日時フィルター |
-| [Forms](demo/forms.html) | POST形式、ラベル、検証エラー、標準入力、flash、未保存警告 |
-| [Components](demo/components.html) | Bootstrap部品と共通の用途・見た目 |
-| [Charts](demo/charts.html) | Optional Chart.js: Line / Bar / Doughnut / Mini、状態、日本語、元データ表 |
-| [Patterns](demo/patterns.html) | 読み込み、失敗、競合、権限、読み取り専用など16状態 |
-| [i18n](demo/i18n.html) | English / 日本語 / 長いドイツ語訳の比較 |
-| [Personal settings](demo/account.html) | 右上のアカウントメニューから開くプロフィール・表示設定のプレビュー |
+- Server-rendered HTML first, with Bootstrap 5.3.x, Bootstrap Icons, and vanilla JavaScript.
+- Progressive enhancement; no SPA or client-side router required.
+- Fully offline-capable with locally bundled assets and no CDN requirement.
+- i18n is mandatory, with English fallback and translated text in HTML rather than hard-coded shared JavaScript.
+- Accessible, desktop-first pages that remain usable at narrow widths and without JavaScript.
 
-## 構成
+## Reference UI
+
+The [reference pages](skills/server-rendered-admin-ui/assets/reference-ui/index.html) cover Dashboard/KPIs, Users/CRUD tables, System status, dense Logs and filters, Forms and validation, Bootstrap Components, loading/empty/error Patterns, i18n, and optional Charts. Linked detail, pagination, result, and account pages show complete flows. The canonical authored styles and behaviors live beside the HTML under `skills/server-rendered-admin-ui/assets/`.
+
+Open `skills/server-rendered-admin-ui/assets/reference-ui/index.html` in a browser or serve the repository with any static localhost server. The included vendor assets keep this reference runnable offline; no Node/npm build or backend is needed. Demo actions are simulated and do not save or delete data. When integrating with a real host, use the reference HTML/CSS as a starting point and replace demo fixtures with server behavior.
+
+## Skill and plugin
+
+**Plugin:** AdminFoundry (`admin-foundry`)
+
+**Skill:** [server-rendered-admin-ui](skills/server-rendered-admin-ui/SKILL.md)
+
+The skill supports **Design**, **Implement**, and **Review** workflows. It routes each task to the relevant canonical page and only the needed design rule, so a Users task need not load every page or document. The root [plugin.json](plugin.json) is the portable Agent Plugins manifest; `.codex-plugin/plugin.json` is a Codex compatibility fallback. This is a skills-only plugin with no MCP server, account connection, or external API.
+
+This English README is the canonical source for project facts. Keep [README.ja.md](README.ja.md) semantically aligned when those facts change.
+
+### Example prompts
+
+**Design**
 
 ```text
-README.md / AGENTS.md / .gitignore / .gitattributes
-docs/
-  DESIGN-SYSTEM.md       COMPONENTS.md / CHARTS.md
-  SERVER-RENDERED-PATTERNS.md  I18N.md
-  ACCESSIBILITY.md       VISUAL-ANTI-PATTERNS.md
-  VALIDATION.md          THIRD-PARTY.md
-demo/
-  index.html / dashboard.html / users.html / system.html
-  logs.html / forms.html / components.html / patterns.html / i18n.html
-  account.html / charts.html
-  users-page-2.html / user-detail*.html / result.html
-assets/
-  css/admin-ui.css / charts.css (optional)
-  js/admin-ui.js / reference-demo.js / theme-init.js / admin-charts.js (optional)
-  favicon.svg
-  vendor/bootstrap/       # 5.3.8, CSS + JS bundle + licenses/maps
-  vendor/bootstrap-icons/ # 1.13.1, CSS + fonts + license
-  vendor/chartjs/         # 4.5.1, optional UMD + source map + licenses
-tests/static-check.mjs    # Optional maintainer verification only
-tests/charts-check.mjs    # Optional chart adapter verification
+Use AdminFoundry to design a server-rendered administration console.
+
+Product: Acme Operations
+Theme: Graphite
+Accent: Blue
+
+Pages:
+- Dashboard
+- Users
+- Nodes
+- Logs
 ```
 
-## 技術とアーキテクチャ
+**Implement**
 
-HTML5 / UTF-8 / CSS Variables / Bootstrap 5.3.8 / Bootstrap Icons 1.13.1 / Vanilla JavaScript / system fonts。
+```text
+Use the AdminFoundry server-rendered-admin-ui skill to implement this PHP users page.
+Preserve the existing GET/POST architecture and use the bundled Users reference as the visual baseline.
+```
 
-CoreはBootstrap / Bootstrap Icons / Vanilla JavaScript。**Optional: Chart.js 4.5.1 (MIT)** はグラフのある`charts.html`と`dashboard.html`だけがローカルUMDを読み込みます。`assets/css/charts.css`と`assets/js/admin-charts.js`もページ単位です。Server-rendered JSONから描画し、実行時のNodeやAPI取得は不要。[Chart規約](docs/CHARTS.md)を参照してください。
+**Review**
 
-画面とテーブルは静的HTMLにすべて含まれます。SPA、ルーター、hydration、JSON API、fetch、ストアはありません。Bootstrapはレイアウト・部品・動作の土台で、独自CSSレイヤーが見た目を定義します。
+```text
+Review this admin UI against the AdminFoundry design system and canonical reference implementation.
+Focus on visual consistency, i18n, accessibility, offline dependencies, and server-rendered architecture.
+```
 
-- GETは検索・フィルター。検索後は普通のページ遷移を行い、クエリーを保持します。
-- POSTは更新。ホスト実装ではPRG（POST → 303 → GET）を推奨します。
-- `admin-ui.js` はモーダル、詳細、コピーなどの補助です。翻訳済み文字列をHTMLから受け取ります。
-- `reference-demo.js` は静的デモ専用です。既存HTML行の絞り込みとPOSTプレビューだけを担当します。
-- デモは保存・削除・停止・ログアウト・通信を行いません。右上のアカウントメニューでは個人設定へ移動でき、ログアウトは説明ダイアログで示します。JavaScriptなしでもメニューと個人設定を読めます。検索・POST・認証処理はホスト実装の責務です。
-- 本番ではfixture adapterを外し、action、CSRF、認可、検証、競合検知、翻訳をホストに接続してください。
+## Architecture and localization
 
-## Theme と i18n
+```text
+Server application -> rendered HTML -> Bootstrap + AdminFoundry styles
+                                         |-> Bootstrap Icons
+                                         `-> vanilla JS enhancements
+```
 
-`data-ui-theme="graphite-blue"` が標準です。Neutral Palette、Shell、Accent、Semantic Colors、Chart Paletteを別々のtokenとして管理します。`blue|red|dark` は比較用presetで、既存の`navy|green|purple`もtoken overrideとして残します。DarkではBootstrapの`data-bs-theme="dark"`と暗色用のsurface・文字・状態色を併用します。密度は comfortable が標準で、`data-ui-density="compact"` のトークンも用意しています。
+The host application owns the translation runtime and locale-aware date, time, and number formatting. Resolve the language from explicit user choice, persisted preference, HTTP `Accept-Language`, then English fallback. Set UTF-8 and `<html lang>`. Shared AdminFoundry JavaScript reads translated labels from HTML and does not hard-code user-facing English messages.
 
-本文16px、表15px、補助14px、ボタン・入力15pxを標準とします。ページ見出しは26pxです。各ページの「Theme preview」でGraphite Blue、Soft blue、Muted red、Darkを比較できます。赤系のaccentは危険操作の意味色と分けています。色の選択は静的デモ専用のURLパラメーターで、画面遷移とGETフォームに引き継がれます。実アプリではhostが`data-ui-theme`と`data-bs-theme`を描画してください。
+All runtime dependencies can be bundled locally for intranet and server-management tools. The reference includes local Bootstrap and Bootstrap Icons; Chart.js is optional and loaded only where a chart helps explain data. A dashboard does not require charts.
 
-i18nは必須です。翻訳ランタイムには依存しません。文言・複数形・日時・数値の整形はホストが担当し、UTF-8、`html lang`、semantic keys、文字列伸長を設計契約とします。
+## Repository structure
 
-## Offline と今後
+```text
+plugin.json                         portable plugin manifest
+.codex-plugin/plugin.json           Codex compatibility fallback
+skills/server-rendered-admin-ui/
+  SKILL.md                          workflow and reference routing
+  references/                       design and implementation contracts
+  assets/
+    reference-ui/                   canonical HTML pages
+    css/                            authored design tokens and chart styles
+    js/                             authored enhancement and demo scripts
+    vendor/                         offline third-party distributions/licenses
+LICENSE                             MIT for AdminFoundry-authored work
+THIRD-PARTY-NOTICES.md              dependency versions and licenses
+tests/                              maintainer-only checks; no runtime dependency
+```
 
-必要なアセットはすべてリポジトリに含まれ、CDN、外部フォント、画像、分析、テレメトリー、外部APIへの実行時依存はありません。依存元・ライセンスは [THIRD-PARTY.md](docs/THIRD-PARTY.md) に記録しています。
-
-今後は人間の評価後に視覚・操作を調整し、設計資産をSkill、skills-only Plugin、再利用可能なGitHub資産へ抽出できます。このSprintではパッケージ化・公開・次のiterationは行いません。
-
-任意の保守チェックは `node tests/static-check.mjs`。依存インストール不要で、ローカル参照・ARIA/inputラベル・コントラストを確認します。これは開発時の補助であり、Reference Siteの実行にNodeは必要ありません。
-
-Chartの任意チェックは`node tests/charts-check.mjs`。不正/欠損JSON、Empty、locale整形、instance更新、部分失敗、Optionalロード範囲を確認します。
+This is a **0.1.0 prerelease** and has not been published to a plugin directory. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for Bootstrap, Bootstrap Icons, Chart.js, and transitive license information. AdminFoundry-authored code and documentation are [MIT licensed](LICENSE); third-party distributions retain their own licenses.

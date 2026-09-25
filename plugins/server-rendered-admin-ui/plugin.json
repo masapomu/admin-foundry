@@ -1,8 +1,0 @@
-{
-  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "server-rendered-admin-ui",
-  "version": "0.1.0",
-  "description": "Design, implement, and review modern B2B administration interfaces for server-rendered applications using canonical reference assets.",
-  "license": "MIT",
-  "keywords": ["admin-ui", "server-rendered", "bootstrap", "design-system"]
-}

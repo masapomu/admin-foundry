@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-ui-theme="graphite-blue" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <meta name="description" content="Offline administration UI reference, server-rendered HTML first.">
+    <title>Personal settings · AdminFoundry</title>
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <script src="../js/theme-init.js"></script>
+    <link rel="stylesheet" href="../vendor/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../vendor/bootstrap-icons/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/admin-ui.css">
+    <script defer src="../vendor/bootstrap/bootstrap.bundle.min.js"></script><script defer src="../js/admin-ui.js"></script><script defer src="../js/reference-demo.js"></script>
+  </head>
+  <body>
+    <a class="ui-skip" href="#main">Skip to content</a>
+    <header class="ui-header">
+      <button type="button" class="btn btn-link ui-icon-btn ui-mobile-toggle" data-ui-sidebar aria-controls="ui-sidebar" aria-expanded="false" aria-label="Toggle navigation"><i class="bi bi-list" aria-hidden="true"></i></button><a class="ui-brand" href="dashboard.html"><span class="ui-brand-mark"><i class="bi bi-intersect" aria-hidden="true"></i></span>Acme Operations</a>
+      <div class="ui-header-meta">
+        <span>Workspace</span><i class="bi bi-chevron-right" aria-hidden="true"></i><strong>Administration</strong><span class="ui-status">Reference</span>
+      </div>
+      <div class="ui-header-end">
+        <a href="i18n.html" class="btn btn-link"><i class="bi bi-translate" aria-hidden="true"></i><span>EN / 日本語</span></a>
+        <details class="ui-account-menu">
+          <summary class="ui-account-trigger" aria-label="Account menu for Alex Morgan"><span class="ui-avatar" aria-hidden="true">AM</span><span class="ui-account-label">Alex Morgan</span><i class="bi bi-list" aria-hidden="true"></i></summary>
+          <div class="ui-account-popover">
+            <div class="ui-account-identity"><strong>Alex Morgan</strong><span>alex.morgan@example.test</span></div>
+            <a class="ui-account-item" href="account.html" aria-current="page"><i class="bi bi-person" aria-hidden="true"></i>Personal settings</a>
+            <button type="button" class="ui-account-item ui-account-signout ui-enhanced-only" data-ui-message data-confirm-title="Sign out preview" data-confirm-message="This is a static reference. No account session was ended." data-confirm-button="OK"><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</button>
+            <a class="ui-account-item ui-account-signout ui-nojs" href="account.html#sign-out"><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</a>
+          </div>
+        </details>
+      </div>
+    </header>
+    <div class="ui-shell">
+      <aside class="ui-sidebar" id="ui-sidebar">
+        <div>
+          <p class="ui-nav-label">
+            Workspace
+          </p>
+          <nav class="ui-nav" aria-label="Workspace">
+            <a href="dashboard.html" ><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Overview</span></a><a href="users.html" ><i class="bi bi-people" aria-hidden="true"></i><span>Users</span></a><a href="system.html" ><i class="bi bi-hdd-stack" aria-hidden="true"></i><span>System</span></a><a href="logs.html" ><i class="bi bi-list-ul" aria-hidden="true"></i><span>Activity logs</span></a>
+          </nav>
+        </div>
+        <div>
+          <p class="ui-nav-label">
+            Design reference
+          </p>
+          <nav class="ui-nav" aria-label="Design reference">
+            <a href="forms.html" ><i class="bi bi-sliders2" aria-hidden="true"></i><span>Forms</span></a><a href="components.html" ><i class="bi bi-grid" aria-hidden="true"></i><span>Components</span></a><a href="charts.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Charts</span></a><a href="patterns.html" ><i class="bi bi-layers" aria-hidden="true"></i><span>State patterns</span></a><a href="i18n.html" ><i class="bi bi-translate" aria-hidden="true"></i><span>Internationalization</span></a>
+          </nav>
+        </div>
+        <div class="ui-sidebar-foot">
+          <strong>AdminFoundry</strong>
+          <p class="mb-2">
+            Foundation / 0.1
+          </p>
+          <span><i class="bi bi-circle-fill" aria-hidden="true"></i> Local assets · Offline ready</span>
+        </div>
+      </aside>
+      <main class="ui-main" id="main" tabindex="-1">
+        <div class="ui-breadcrumb">
+          Account <i class="bi bi-chevron-right" aria-hidden="true"></i> <span>Personal settings</span>
+        </div>
+        <div class="ui-theme-preview" role="group" aria-label="Color theme preview"><span>Theme preview</span><a href="?theme=graphite-blue" data-demo-theme="graphite-blue" aria-current="true">Graphite Blue</a><a href="?theme=sapphire-blue" data-demo-theme="sapphire-blue">Sapphire Blue</a><a href="?theme=garnet-red" data-demo-theme="garnet-red">Garnet Red</a><a href="?theme=aqua-ivory" data-demo-theme="aqua-ivory">Aqua Ivory</a><a href="?theme=dark" data-demo-theme="dark">Dark</a></div>
+        <div class="ui-page-header">
+          <div>
+            <h1>Personal settings</h1>
+            <p>Manage your profile and display preferences.</p>
+          </div>
+        </div>
+        <div class="alert alert-info" role="status">
+          This is a static preview. Changes to these settings are not saved.
+        </div>
+        <noscript>
+          <div class="alert alert-info">
+            The form is readable without JavaScript. Saving requires a host application.
+          </div>
+        </noscript>
+        <form method="post" action="result.html" data-demo-post="Settings preview complete. No account data was changed.">
+          <section class="ui-form-grid" aria-labelledby="account-profile-title">
+            <div>
+              <h2 id="account-profile-title">Profile</h2>
+              <p class="ui-note">Details shown to other workspace members.</p>
+            </div>
+            <div class="ui-fields">
+              <div>
+                <label class="form-label" for="account-display-name">Display name</label>
+                <input class="form-control" id="account-display-name" name="displayName" value="Alex Morgan" autocomplete="name" required>
+              </div>
+              <div>
+                <label class="form-label" for="account-email">Email address</label>
+                <input class="form-control" id="account-email" type="email" value="alex.morgan@example.test" autocomplete="email" aria-describedby="account-email-help" readonly>
+                <div class="form-text" id="account-email-help">Contact an administrator to change this address.</div>
+              </div>
+            </div>
+          </section>
+          <section class="ui-form-grid" aria-labelledby="account-preferences-title">
+            <div>
+              <h2 id="account-preferences-title">Display preferences</h2>
+              <p class="ui-note">Choose how information appears for your account.</p>
+            </div>
+            <div class="ui-fields">
+              <div>
+                <label class="form-label" for="account-language">Language</label>
+                <select class="form-select" id="account-language" name="language">
+                  <option value="en" selected>English</option>
+                  <option value="ja">日本語</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label" for="account-timezone">Time zone</label>
+                <select class="form-select" id="account-timezone" name="timeZone">
+                  <option value="UTC" selected>UTC</option>
+                  <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                </select>
+              </div>
+              <div class="ui-span">
+                <div class="form-check">
+                  <input class="form-check-input" id="account-email-notifications" name="emailNotifications" type="checkbox" value="on" checked>
+                  <label class="form-check-label" for="account-email-notifications">Email me about important workspace activity</label>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="ui-form-actions">
+            <a class="btn btn-secondary" href="dashboard.html">Cancel</a>
+            <button class="btn btn-primary" type="submit"><i class="bi bi-check2" aria-hidden="true"></i>Save preferences</button>
+          </div>
+        </form>
+        <section class="ui-example mt-5" id="sign-out" aria-labelledby="account-sign-out-title">
+          <h2 id="account-sign-out-title">Sign out</h2>
+          <p>This reference has no active account session. The account menu shows a sign-out preview without ending a session.</p>
+        </section>
+        <footer class="ui-footer">
+          <span>AdminFoundry · Reference implementation</span><span>Fictional data · <span data-demo-theme-name>Graphite Blue</span> / Comfortable · Snapshot Sep 25, 2026</span>
+        </footer>
+      </main>
+    </div>
+    <div class="modal fade" id="ui-dialog" tabindex="-1" aria-labelledby="ui-dialog-title" aria-describedby="ui-dialog-message">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="ui-dialog-title" data-dialog-title>
+            </h2>
+          </div>
+          <div class="modal-body" id="ui-dialog-message" data-dialog-message>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" data-dialog-cancel>Cancel</button><button type="button" class="btn btn-primary" data-dialog-accept>OK</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="toast-container position-fixed ui-toast-container" aria-live="polite" aria-atomic="true">
+      <div class="toast" id="ui-toast" role="status">
+        <div class="d-flex">
+          <div class="toast-body">
+          </div>
+          <button type="button" class="btn-close me-3 m-auto" data-bs-dismiss="toast" aria-label="Dismiss notification"></button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
