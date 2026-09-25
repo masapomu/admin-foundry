@@ -2,12 +2,39 @@
 (() => {
   'use strict';
   if (!window.bootstrap) return;
+  const theme = document.documentElement.dataset.uiTheme;
+  document.querySelectorAll('[data-demo-theme]').forEach(link => {
+    if (link.dataset.demoTheme === theme) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+    const target = new URL(location.href);
+    target.searchParams.set('theme', link.dataset.demoTheme);
+    link.href = target.href;
+  });
+  document.querySelectorAll('[data-demo-theme-name]').forEach(label => {
+    label.textContent = document.querySelector(`[data-demo-theme="${theme}"]`).textContent;
+  });
+  if (theme !== 'gray') {
+    // Preserve the visual preview across ordinary links and GET forms.
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (link.hasAttribute('data-demo-theme') || link.getAttribute('href').startsWith('#')) return;
+      const target = new URL(link.href, location.href);
+      if (target.protocol !== location.protocol || (target.protocol !== 'file:' && target.origin !== location.origin)) return;
+      if (!target.pathname.endsWith('.html')) return;
+      target.searchParams.set('theme', theme);
+      link.href = target.href;
+    });
+    document.querySelectorAll('form[method="get"]').forEach(form => {
+      const input = document.createElement('input');
+      input.type = 'hidden'; input.name = 'theme'; input.value = theme;
+      form.append(input);
+    });
+  }
   document.addEventListener('submit', event => {
     if (event.defaultPrevented || !event.target.matches('[data-demo-post]')) return;
     event.preventDefault();
     const toast = document.querySelector('#ui-toast');
     toast.querySelector('.toast-body').textContent = event.target.dataset.demoPost;
-    bootstrap.Toast.getOrCreateInstance(toast, { delay:7000 }).show();
+    bootstrap.Toast.getOrCreateInstance(toast, { delay:5000 }).show();
   });
   document.querySelectorAll('[data-demo-filter]').forEach(form => {
     const params = new URLSearchParams(location.search);

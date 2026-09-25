@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <meta name="description" content="Offline administration UI reference, server-rendered HTML first.">
-    <title>Users · page 2 · WebUI Design Lab</title>
+    <title>Personal settings · WebUI Design Lab</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
     <script src="../assets/js/theme-init.js"></script>
     <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
@@ -26,7 +26,7 @@
           <summary class="ui-account-trigger" aria-label="Account menu for Alex Morgan"><span class="ui-avatar" aria-hidden="true">AM</span><span class="ui-account-label">Alex Morgan</span><i class="bi bi-list" aria-hidden="true"></i></summary>
           <div class="ui-account-popover">
             <div class="ui-account-identity"><strong>Alex Morgan</strong><span>alex.morgan@example.test</span></div>
-            <a class="ui-account-item" href="account.html"><i class="bi bi-person" aria-hidden="true"></i>Personal settings</a>
+            <a class="ui-account-item" href="account.html" aria-current="page"><i class="bi bi-person" aria-hidden="true"></i>Personal settings</a>
             <button type="button" class="ui-account-item ui-account-signout ui-enhanced-only" data-ui-message data-confirm-title="Sign out preview" data-confirm-message="This is a static reference. No account session was ended." data-confirm-button="OK"><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</button>
             <a class="ui-account-item ui-account-signout ui-nojs" href="account.html#sign-out"><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</a>
           </div>
@@ -40,7 +40,7 @@
             Workspace
           </p>
           <nav class="ui-nav" aria-label="Workspace">
-            <a href="dashboard.html" ><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Overview</span></a><a href="users.html" aria-current="page"><i class="bi bi-people" aria-hidden="true"></i><span>Users</span></a><a href="system.html" ><i class="bi bi-hdd-stack" aria-hidden="true"></i><span>System</span></a><a href="logs.html" ><i class="bi bi-list-ul" aria-hidden="true"></i><span>Activity logs</span></a>
+            <a href="dashboard.html" ><i class="bi bi-grid-1x2" aria-hidden="true"></i><span>Overview</span></a><a href="users.html" ><i class="bi bi-people" aria-hidden="true"></i><span>Users</span></a><a href="system.html" ><i class="bi bi-hdd-stack" aria-hidden="true"></i><span>System</span></a><a href="logs.html" ><i class="bi bi-list-ul" aria-hidden="true"></i><span>Activity logs</span></a>
           </nav>
         </div>
         <div>
@@ -61,87 +61,78 @@
       </aside>
       <main class="ui-main" id="main" tabindex="-1">
         <div class="ui-breadcrumb">
-          Workspace <i class="bi bi-chevron-right" aria-hidden="true"></i> <span>Users · page 2</span>
+          Account <i class="bi bi-chevron-right" aria-hidden="true"></i> <span>Personal settings</span>
         </div>
         <div class="ui-theme-preview" role="group" aria-label="Color theme preview"><span>Theme preview</span><a href="?theme=gray" data-demo-theme="gray" aria-current="true">Gray</a><a href="?theme=blue" data-demo-theme="blue">Soft blue</a><a href="?theme=red" data-demo-theme="red">Muted red</a><a href="?theme=dark" data-demo-theme="dark">Dark</a></div>
         <div class="ui-page-header">
           <div>
-            <h1>
-              Users · page 2
-            </h1>
-            <p>
-              Pagination uses ordinary links and server-rendered page content.
-            </p>
+            <h1>Personal settings</h1>
+            <p>Manage your profile and display preferences.</p>
           </div>
-          <div class="ui-actions">
-          </div>
+        </div>
+        <div class="alert alert-info" role="status">
+          This is a static preview. Changes to these settings are not saved.
         </div>
         <noscript>
           <div class="alert alert-info">
-            All reference content is available. Interactive previews require JavaScript; search and POST processing belong to the host application.
+            The form is readable without JavaScript. Saving requires a host application.
           </div>
         </noscript>
-        <div class="ui-table-wrap" tabindex="0" role="region" aria-label="More workspace users">
-          <table class="table" >
-            <caption class="visually-hidden">More workspace users</caption>
-            <thead>
-              <tr>
-                <th scope="col">
-                  Name
-                </th>
-                <th scope="col">
-                  Role
-                </th>
-                <th scope="col">
-                  Status
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  Casey Reed
-                </td>
-                <td>
-                  Viewer
-                </td>
-                <td>
-                  <span class="ui-status ui-status-success">Enabled</span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Taylor Park
-                </td>
-                <td>
-                  Operator
-                </td>
-                <td>
-                  <span class="ui-status ui-status-neutral">Disabled</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="ui-table-footer">
-          <span>2 users · page 2 of 2</span>
-          <nav aria-label="Pagination">
-            <ul class="pagination mb-0">
-              <li class="page-item">
-                <a class="page-link" href="users.html">Previous</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="users.html">1</a>
-              </li>
-              <li class="page-item active">
-                <span class="page-link" aria-current="page">2</span>
-              </li>
-              <li class="page-item disabled">
-                <span class="page-link" aria-disabled="true">Next</span>
-              </li>
-            </ul>
-          </nav>
-        </div>
+        <form method="post" action="result.html" data-demo-post="Settings preview complete. No account data was changed.">
+          <section class="ui-form-grid" aria-labelledby="account-profile-title">
+            <div>
+              <h2 id="account-profile-title">Profile</h2>
+              <p class="ui-note">Details shown to other workspace members.</p>
+            </div>
+            <div class="ui-fields">
+              <div>
+                <label class="form-label" for="account-display-name">Display name</label>
+                <input class="form-control" id="account-display-name" name="displayName" value="Alex Morgan" autocomplete="name" required>
+              </div>
+              <div>
+                <label class="form-label" for="account-email">Email address</label>
+                <input class="form-control" id="account-email" type="email" value="alex.morgan@example.test" autocomplete="email" aria-describedby="account-email-help" readonly>
+                <div class="form-text" id="account-email-help">Contact an administrator to change this address.</div>
+              </div>
+            </div>
+          </section>
+          <section class="ui-form-grid" aria-labelledby="account-preferences-title">
+            <div>
+              <h2 id="account-preferences-title">Display preferences</h2>
+              <p class="ui-note">Choose how information appears for your account.</p>
+            </div>
+            <div class="ui-fields">
+              <div>
+                <label class="form-label" for="account-language">Language</label>
+                <select class="form-select" id="account-language" name="language">
+                  <option value="en" selected>English</option>
+                  <option value="ja">日本語</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label" for="account-timezone">Time zone</label>
+                <select class="form-select" id="account-timezone" name="timeZone">
+                  <option value="UTC" selected>UTC</option>
+                  <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                </select>
+              </div>
+              <div class="ui-span">
+                <div class="form-check">
+                  <input class="form-check-input" id="account-email-notifications" name="emailNotifications" type="checkbox" value="on" checked>
+                  <label class="form-check-label" for="account-email-notifications">Email me about important workspace activity</label>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="ui-form-actions">
+            <a class="btn btn-secondary" href="dashboard.html">Cancel</a>
+            <button class="btn btn-primary" type="submit"><i class="bi bi-check2" aria-hidden="true"></i>Save preferences</button>
+          </div>
+        </form>
+        <section class="ui-example mt-5" id="sign-out" aria-labelledby="account-sign-out-title">
+          <h2 id="account-sign-out-title">Sign out</h2>
+          <p>This reference has no active account session. The account menu shows a sign-out preview without ending a session.</p>
+        </section>
         <footer class="ui-footer">
           <span>WebUI Design Lab · Reference implementation</span><span>Fictional data · <span data-demo-theme-name>Gray</span> / Comfortable · Snapshot Sep 25, 2026</span>
         </footer>

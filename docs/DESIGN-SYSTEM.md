@@ -19,8 +19,8 @@ CSS / JS / fontsを `assets/vendor` へ同梱。CDN、外部画像、analytics�
 |---|---|
 | Layout | header 56px / sidebar 232px / content 24px |
 | Spacing | `--ui-space-1/2/3/4/5/6/8/12`: 4/8/12/16/20/24/32/48px |
-| Typography | body 14px / small 12px / title 26px |
-| Density | row 48px / control 36px / panel 20px / section gap 24px |
+| Typography | body 16px / small 14px / table 15px / controls 15px / title 26px |
+| Density | row 52px / control 38px / panel 20px / section gap 24px |
 | Radius | small 4px / medium 6px |
 | Surface | app #f7f8f9 / panel #fff / sidebar #f0f1f3 |
 | Text | primary #24282f / secondary #555d68 / muted #626b77 |
@@ -30,28 +30,28 @@ CSS / JS / fontsを `assets/vendor` へ同梱。CDN、外部画像、analytics�
 | Semantic | success #23704c / warning #885613 / danger #b3363d / info #31688d |
 | Focus | #315fbd、3px outline、3px offset |
 
-部品にはtokenを参照させる。進捗バーのwidthはデータ値なので固定tokenの対象外。行は最小48px、長文や翻訳による拡張は許容する。
+部品にはtokenを参照させる。進捗バーのwidthはデータ値なので固定tokenの対象外。行は最小52px、長文や翻訳による拡張は許容する。
 
 ## 6. Theme system
-`html[data-ui-theme="gray"]` が標準。blue/navy/green/purpleは4つのbrand tokensを差し替える。ブランドはシェル・選択・ニュートラルな強調に使う。
+`html[data-ui-theme="gray"]` が標準。Soft blueはbrand #365c82と淡い青灰色のsurface、Muted redはbrand #86515aと淡い赤灰色のsurfaceを使う。Muted redではprimary action・リンク・focusも同じ鈍い赤に揃える。Darkはapp #15191f、panel #20262e、sidebar #1b222b、文字 #edf2f7、accent #91b8e8を基調とし、`data-bs-theme="dark"`も設定する。Darkでは状態色を暗い背景向けに明るくし、危険操作のボタンには白文字とのコントラストを確保した別の濃い赤を使う。navy/green/purpleもbrand tokensを差し替える。Reference SiteのURLパラメーター比較はdemo専用で、実アプリではhostが属性を描画する。
 
 ## 7. Semantic colors
-テーマから独立。primary=主要操作、success=正常/成功、warning=注意、danger=失敗/破壊的操作、info=補足。各色に専用の淡い背景。状態ラベルを必ず併記し、製品固有の状態語はホストが定義する。
+success / warning / danger / infoの意味と用途はテーマから独立。primary=主要操作で、Muted redではbrand色を使う。success=正常/成功、warning=注意、danger=失敗/破壊的操作、info=補足。Darkでは各意味色と背景を暗色用に切り替える。状態ラベルを必ず併記し、製品固有の状態語はホストが定義する。
 
 ## 8. Typography
-system-ui / -apple-system / Segoe UI / Noto Sans / sans-serif。Web fontなし。通常14px、表13px、補助12px。見出しは26/16/14px。IDと時刻はローカルmonospace。大見出しや過度な太字を避ける。
+system-ui / -apple-system / Segoe UI / Noto Sans / sans-serif。Web fontなし。通常16px、表15px、補助14px、表見出し13px。見出しは26/18/16px。IDと時刻はローカルmonospace 14px。大見出しや過度な太字を避ける。
 
 ## 9. Spacing
 有限scaleのみ。部品内8–16px、panel20px、section24px。英語の文字幅を想定した操作ボタンの固定幅は使わない。
 
 ## 10. Density
-Comfortable Enterprise。ボタン/入力36px、表48px基準。複数行や長文では高くして内容を残す。compactのtokenはrow40px/control32px/content20px。切替UIは初版対象外。
+Comfortable Enterprise。ボタン/入力38px、表52px基準。複数行や長文では高くして内容を残す。compactのtokenはrow44px/control34px/content20px。切替UIは初版対象外。
 
 ## 11. Application shell
 header + sidebar + main。CSS Gridのmainはminmax(0,1fr)。tableは自身で横スクロール。デスクトップのsidebarはsticky。
 
 ## 12. Header
-高さ56px。製品識別、workspace、言語比較へのリンク、アカウント表示。アカウントはデモでは表示のみ。
+高さ56px。製品識別、workspace、言語比較へのリンク、アカウントメニュー。右上の名前・アバター・メニューアイコンを押すと、個人設定とログアウトが現れる。native `details` なのでJSなしでも開け、JSありでは外側クリックとEscapeで閉じる。デモのログアウトはセッションを変更しない説明プレビューとする。
 
 ## 13. Sidebar
 16px Bootstrap Icon + label。workspaceとdesign referenceを分離。aria-current、左の線、背景、font weightで選択を示す。hover/focusを提供。狭幅ではボタンで開閉、JSなしなら常時表示。
@@ -75,7 +75,7 @@ input/textarea/select/checkbox/radio/switchはnative HTML + Bootstrap。label必
 date / time / datetime-local + form-control。pickerの表示はブラウザー/OSに従う。datetime-localにtimezoneは含まれない。UTC等の解釈をラベルとホスト契約で指定する。
 
 ## 20. Buttons
-Primaryは青、secondaryは白地、dangerは赤。標準36px、radius4px。アイコンだけの操作にはaria-label。disabled理由は近くの文章で説明する。
+PrimaryはGray/Soft blue/Darkで青、Muted redで鈍い赤。secondaryはsurface色、dangerは状態を示す赤。Darkのdangerボタンは明るい状態文字色と分け、白文字が読める濃い赤を使う。標準38px、radius4px。アイコンだけの操作にはaria-label。disabled理由は近くの文章で説明する。
 
 ## 21. Bootstrap Icons
 ローカルfont、16pxを基準。Refresh=arrow-clockwise / Search=search / Users=people / Settings=gearまたは設定ページのsliders2 / Delete=trash3 / Edit=pencil / Copy=copy / Information=info-circle / Warning=exclamation-triangle。装飾はaria-hidden。
@@ -90,7 +90,7 @@ Bootstrap Modalを使う共通1個。message=OK、confirm=Cancel/Confirm、destr
 read-only details/metadata。編集は通常formまたはmodalへ。閉じるラベルを付ける。JSなし用のフルページリンクを用意する。
 
 ## 25. Toast / alert / popover / tooltip
-Toast=短命で軽い通知。Alert=残す必要がある情報。Popover=対象に結びつく追加説明。Tooltip=短い補足。必須情報をpopover/tooltipだけに置かない。
+Toast=短命で軽い通知。見落としを避けるため幅440pxを上限に、本文16px・強調線・影を付け、画面右下（狭幅では左右に余白を設けた下部）に表示する。下端の3pxバーが5秒で短くなり、自動で閉じる。マウス・フォーカス中はカウントを止め、離れたら5秒から再開する。Alert=残す必要がある情報。Popover=対象に結びつく追加説明。Tooltip=短い補足。必須情報をpopover/tooltipだけに置かない。
 
 ## 26. Loading / empty / error
 初期loading、背景refresh、処理中を分ける。初期emptyと検索no resultsを分ける。partial/full failure、unavailable、permission denied、conflictを `patterns.html` で示す。refresh中も既存データは残す。
@@ -119,8 +119,8 @@ Semantic landmarks、skip link、keyboard focus、label、caption、aria-describ
 ## 34. Motion
 Bootstrapの控えめなtransitionのみ。prefers-reduced-motionではanimation/transitionを止める。動きのないspinnerにも処理中という文字が残る。
 
-## 35. Dark mode readiness
-初版lightのみ。surface/text/border/theme/semanticはtoken経由、htmlにdata-bs-theme。dark採用時は全tokenとcontrastを再検証する。現状のdark適合を保証しない。
+## 35. Dark theme
+比較用のDarkは`data-ui-theme="dark"`と`data-bs-theme="dark"`を組み合わせる。surface/text/border/brand/action/semanticを暗色用tokenへ切り替え、フォーム・ダイアログなどBootstrap部品も暗色で描画する。静的デモはページ描画前にURLの`theme=dark`を適用する。標準はGrayのままで、OS設定による自動切り替えは行わない。
 
 ## 36. Visual anti-patterns
 標準Bootstrap dashboardの流用、巨大KPI、強いshadow、glass、gradient、pill多用、色付きアイコン円、装飾chart、全sectionカード化、SPA化を避ける。VISUAL-ANTI-PATTERNS.mdを参照。

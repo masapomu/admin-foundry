@@ -26,12 +26,13 @@ Bootstrapのclass/APIを維持し、`admin-ui.css` で視覚を統一する。�
 ## Markup contracts
 
 - `.ui-page-header`: h1 / description / `.ui-actions`。card wrapper不要。
+- `.ui-account-menu`: ヘッダー右上のnative `details`。個人設定への通常リンクとログアウトのプレビューを含む。実アプリのログアウトはホストがPOSTで処理する。
 - `.ui-toolbar`: `form method=get`、label付きinput/select、submitとreset link。
 - `.ui-table-wrap`: named region + tabindex、table/caption/th[scope=col]。
 - `.ui-status-*`: 意味色とlabel。製品のstate vocabularyはホスト定義。
 - `#ui-dialog`: ページlayoutに一つ。`data-ui-message` / submitterの`data-ui-confirm`、`data-confirm-*`が入力。
 - `.offcanvas`: Bootstrap APIのまま。read-only内容と通常の詳細ページへのリンク。
-- `#ui-toast`: 事前に存在するlive region内。表示文は`data-ui-toast`から取得。
+- `#ui-toast`: 事前に存在するpolite live region内。表示文は`data-ui-toast`から取得。画面右下（狭幅では左右に余白を設けた下部）に幅広く表示し、下端の細いバーで残り時間を示して5秒後に自動で閉じる。マウスやフォーカスがある間は維持し、離れたら5秒から数え直す。閉じるボタンも用意する。
 - `data-ui-copy="#id"`: 対象のtextContentをコピー。success/error属性必須。
 - `data-ui-password="#id"`: 表示/非表示の翻訳ラベル、aria-pressed。
 - `data-ui-bulk`: 同一form内のcheckbox、select all、件数、操作。

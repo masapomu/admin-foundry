@@ -45,6 +45,8 @@ GET /users
 
 CSRF token、認証/認可、処理の冪等性、監査はhost責務。GETで変更しない。POST成功前に一覧を先行更新しない。static demoに実際のtoken/endpointは含まれない。
 
+ログアウトもGETリンクでセッションを変更せず、ホスト側のCSRF保護付きPOSTでセッションを無効化してからサインイン画面へ遷移する。静的Reference Siteのメニューは動作プレビューのみで、セッションを変更しない。
+
 ## Validation errors
 
 POSTに問題があれば、ホストの規約に従い400/422等でformを再描画する。安全な入力値を維持し、エラーsummaryから該当inputへリンクする。fieldは `is-invalid`、`aria-invalid="true"`、`aria-describedby`。秘密値は再出力しない。native/client validationは補助で、サーバー側検証を省かない。

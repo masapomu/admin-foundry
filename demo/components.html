@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="color-scheme" content="light">
+    <meta name="color-scheme" content="light dark">
     <meta name="description" content="Offline administration UI reference, server-rendered HTML first.">
     <title>Components · WebUI Design Lab</title>
     <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+    <script src="../assets/js/theme-init.js"></script>
     <link rel="stylesheet" href="../assets/vendor/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../assets/css/admin-ui.css">
@@ -20,7 +21,16 @@
         <span>Workspace</span><i class="bi bi-chevron-right" aria-hidden="true"></i><strong>Administration</strong><span class="ui-status">Reference</span>
       </div>
       <div class="ui-header-end">
-        <a href="i18n.html" class="btn btn-link"><i class="bi bi-translate" aria-hidden="true"></i><span>EN / 日本語</span></a><span class="ui-account-label ui-small">Alex Morgan</span><span class="ui-avatar" aria-label="Alex Morgan">AM</span>
+        <a href="i18n.html" class="btn btn-link"><i class="bi bi-translate" aria-hidden="true"></i><span>EN / 日本語</span></a>
+        <details class="ui-account-menu">
+          <summary class="ui-account-trigger" aria-label="Account menu for Alex Morgan"><span class="ui-avatar" aria-hidden="true">AM</span><span class="ui-account-label">Alex Morgan</span><i class="bi bi-list" aria-hidden="true"></i></summary>
+          <div class="ui-account-popover">
+            <div class="ui-account-identity"><strong>Alex Morgan</strong><span>alex.morgan@example.test</span></div>
+            <a class="ui-account-item" href="account.html"><i class="bi bi-person" aria-hidden="true"></i>Personal settings</a>
+            <button type="button" class="ui-account-item ui-account-signout ui-enhanced-only" data-ui-message data-confirm-title="Sign out preview" data-confirm-message="This is a static reference. No account session was ended." data-confirm-button="OK"><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</button>
+            <a class="ui-account-item ui-account-signout ui-nojs" href="account.html#sign-out"><i class="bi bi-box-arrow-right" aria-hidden="true"></i>Sign out</a>
+          </div>
+        </details>
       </div>
     </header>
     <div class="ui-shell">
@@ -53,6 +63,7 @@
         <div class="ui-breadcrumb">
           Workspace <i class="bi bi-chevron-right" aria-hidden="true"></i> <span>Components</span>
         </div>
+        <div class="ui-theme-preview" role="group" aria-label="Color theme preview"><span>Theme preview</span><a href="?theme=gray" data-demo-theme="gray" aria-current="true">Gray</a><a href="?theme=blue" data-demo-theme="blue">Soft blue</a><a href="?theme=red" data-demo-theme="red">Muted red</a><a href="?theme=dark" data-demo-theme="dark">Dark</a></div>
         <div class="ui-page-header">
           <div>
             <h1>
@@ -248,7 +259,7 @@
           </div>
         </div>
         <footer class="ui-footer">
-          <span>WebUI Design Lab · Reference implementation</span><span>Fictional data · Gray / Comfortable · Snapshot Sep 25, 2026</span>
+          <span>WebUI Design Lab · Reference implementation</span><span>Fictional data · <span data-demo-theme-name>Gray</span> / Comfortable · Snapshot Sep 25, 2026</span>
         </footer>
       </main>
     </div>
@@ -267,7 +278,7 @@
         </div>
       </div>
     </div>
-    <div class="toast-container position-fixed bottom-0 end-0 p-3" aria-live="polite" aria-atomic="true">
+    <div class="toast-container position-fixed ui-toast-container" aria-live="polite" aria-atomic="true">
       <div class="toast" id="ui-toast" role="status">
         <div class="d-flex">
           <div class="toast-body">

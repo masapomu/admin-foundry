@@ -29,7 +29,10 @@
     const cancel = one('[data-dialog-cancel]', modalElement);
     (cancel.hidden ? one('[data-dialog-accept]', modalElement) : cancel).focus();
   });
-  modalElement?.addEventListener('hidden.bs.modal', () => { pending = null; opener?.focus(); });
+  modalElement?.addEventListener('hidden.bs.modal', () => {
+    pending = null;
+    (opener?.closest('details:not([open])')?.querySelector('summary') || opener)?.focus();
+  });
   one('[data-dialog-accept]', modalElement || document)?.addEventListener('click', () => {
     const proceed = pending;
     pending = null;
@@ -75,11 +78,38 @@
     const toast = event.target.closest('[data-ui-toast]');
     if (toast) notify(toast.dataset.uiToast);
   });
+  document.addEventListener('click', event => {
+    all('.ui-account-menu[open]').forEach(menu => {
+      if (!menu.contains(event.target) && !event.target.closest('#ui-dialog')) menu.open = false;
+    });
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== 'Escape' || one('#ui-dialog.show')) return;
+    const menu = one('.ui-account-menu[open]');
+    if (!menu) return;
+    menu.open = false;
+    one('summary', menu).focus();
+  });
+  const toastElement = one('#ui-toast');
+  function restartToastCountdown() {
+    if (!toastElement?.classList.contains('show') || toastElement.classList.contains('showing')) return;
+    toastElement.classList.remove('ui-toast-counting');
+    if (toastElement.matches(':hover, :focus-within')) return;
+    void toastElement.offsetWidth;
+    toastElement.classList.add('ui-toast-counting');
+  }
+  toastElement?.addEventListener('shown.bs.toast', restartToastCountdown);
+  toastElement?.addEventListener('hidden.bs.toast', () => toastElement.classList.remove('ui-toast-counting'));
+  toastElement?.addEventListener('mouseenter', () => toastElement.classList.remove('ui-toast-counting'));
+  toastElement?.addEventListener('mouseleave', restartToastCountdown);
+  toastElement?.addEventListener('focusin', () => toastElement.classList.remove('ui-toast-counting'));
+  toastElement?.addEventListener('focusout', event => {
+    if (!toastElement.contains(event.relatedTarget)) queueMicrotask(restartToastCountdown);
+  });
   function notify(message) {
-    const toast = one('#ui-toast');
-    if (!toast || !message) return;
-    one('.toast-body', toast).textContent = message;
-    bootstrap.Toast.getOrCreateInstance(toast, { delay:5000 }).show();
+    if (!toastElement || !message) return;
+    one('.toast-body', toastElement).textContent = message;
+    bootstrap.Toast.getOrCreateInstance(toastElement, { delay:5000 }).show();
   }
   all('[data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
   all('[data-bs-toggle="popover"]').forEach(el => new bootstrap.Popover(el));

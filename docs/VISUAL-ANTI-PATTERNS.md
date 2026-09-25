@@ -16,6 +16,6 @@
 
 ## Prefer
 
-14pxの本文、26pxのページ見出し、48px基準の表、4–6pxのradius、有限spacing scale、薄い罫線、白/grayのsurface。Primaryとsemantic colorを明確に分ける。カードは意味のあるまとまりだけに使う。
+16pxの本文、26pxのページ見出し、52px基準の表、4–6pxのradius、有限spacing scale、薄い罫線、明暗それぞれのsurface。Soft blue、Muted red、Darkでも同じ階層と落ち着きを維持する。Muted redのbrand色とDangerの意味色を混同しない。カードは意味のあるまとまりだけに使う。
 
 変更時はDashboardだけで判断せず、Users/Logsの情報密度、日本語/長文、Formsの検証エラー、狭幅、modal/offcanvasを一緒に確認する。

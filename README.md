@@ -22,6 +22,7 @@
 | [Components](demo/components.html) | Bootstrap部品と共通の用途・見た目 |
 | [Patterns](demo/patterns.html) | 読み込み、失敗、競合、権限、読み取り専用など16状態 |
 | [i18n](demo/i18n.html) | English / 日本語 / 長いドイツ語訳の比較 |
+| [Personal settings](demo/account.html) | 右上のアカウントメニューから開くプロフィール・表示設定のプレビュー |
 
 ## 構成
 
@@ -35,6 +36,7 @@ docs/
 demo/
   index.html / dashboard.html / users.html / system.html
   logs.html / forms.html / components.html / patterns.html / i18n.html
+  account.html
   users-page-2.html / user-detail*.html / result.html
 assets/
   css/admin-ui.css
@@ -55,12 +57,14 @@ HTML5 / UTF-8 / CSS Variables / Bootstrap 5.3.8 / Bootstrap Icons 1.13.1 / Vanil
 - POSTは更新。ホスト実装ではPRG（POST → 303 → GET）を推奨します。
 - `admin-ui.js` はモーダル、詳細、コピーなどの補助です。翻訳済み文字列をHTMLから受け取ります。
 - `reference-demo.js` は静的デモ専用です。既存HTML行の絞り込みとPOSTプレビューだけを担当します。
-- デモは保存・削除・停止・通信を行いません。JavaScriptなしでは内容・リンク・通常の入力が残り、POST操作は統合契約へのリンクになります。検索の処理はホスト実装の責務です。
+- デモは保存・削除・停止・ログアウト・通信を行いません。右上のアカウントメニューでは個人設定へ移動でき、ログアウトは説明ダイアログで示します。JavaScriptなしでもメニューと個人設定を読めます。検索・POST・認証処理はホスト実装の責務です。
 - 本番ではfixture adapterを外し、action、CSRF、認可、検証、競合検知、翻訳をホストに接続してください。
 
 ## Theme と i18n
 
-Gray が標準です。`data-ui-theme="blue|navy|green|purple"` でシェルの色を拡張できます。ブランド色 `--ui-theme-*` と primary action / success / warning / danger / info は独立しています。密度は comfortable が標準で、`data-ui-density="compact"` のトークンも用意しています。
+Gray が標準です。`data-ui-theme="blue|red|dark|navy|green|purple"` で色を拡張できます。Muted redでは主要操作・リンク・フォーカス色もブランド色に合わせます。DarkではBootstrapの`data-bs-theme="dark"`と暗色用のsurface・文字・状態色を併用します。密度は comfortable が標準で、`data-ui-density="compact"` のトークンも用意しています。
+
+本文16px、表15px、補助14px、ボタン・入力15pxを標準とします。ページ見出しは26pxです。各ページの「Theme preview」でGray、Soft blue、Muted red、Darkを比較できます。赤系はブランドの鈍い赤と淡いsurfaceを使い、危険操作の明るい赤とは分けています。色の選択は静的デモ専用のURLパラメーターで、画面遷移とGETフォームに引き継がれます。実アプリではhostが`data-ui-theme`と`data-bs-theme`を描画してください。
 
 i18nは必須です。翻訳ランタイムには依存しません。文言・複数形・日時・数値の整形はホストが担当し、UTF-8、`html lang`、semantic keys、文字列伸長を設計契約とします。
 

@@ -9,7 +9,8 @@
 - 表はcaption、scope=col。横scroll領域に名前とtabindexを付け、キーボードで利用可能にする。
 - icon-onlyはaria-label。装飾Bootstrap Iconsはaria-hidden。
 - statusは色＋文言。navigationはaria-current＋線/背景/太さ。
-- 成功/軽い通知はrole=status、重要な失敗はrole=alert。toast containerは事前に存在するpolite live region。
+- アカウントメニューは名前付きsummaryで開閉。個人設定とログアウトは文字ラベルを持ち、Escapeで閉じるとsummaryにfocusを戻す。
+- 成功/軽い通知はrole=status、重要な失敗はrole=alert。toast containerは事前に存在するpolite live region。通常は5秒で閉じるが、マウス・フォーカス中は維持する。閉じるボタンにラベルを付け、残り時間バーは装飾扱いとし、動きを減らす設定では非表示にする。
 - modalはlabelledby/describedby、Bootstrap focus trap/Escape、Cancel初期focus、起点復帰。
 - offcanvasはheadingとclose label。JSなしの詳細リンクあり。
 - dropdownはBootstrapのキーボード操作を利用。無効actionの理由は周囲の文章で説明。
