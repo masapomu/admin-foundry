@@ -5,7 +5,7 @@
 - Use Bootstrap 5.3.x, Bootstrap Icons and vanilla JavaScript. Keep dependencies local and licensed. No runtime/build prerequisite.
 - HTML contains the content; JavaScript progressively enhances it. Never generate entire tables in shared JavaScript.
 - i18n is mandatory: UTF-8, language tags, translated HTML/data attributes, no user-facing strings in shared JS.
-- Reuse `assets/css/admin-ui.css` tokens. Separate brand/theme from action and semantic colors. Keep density and visual consistency across reference pages.
+- Use the Graphite Blue reference preset by default. Follow the surface and contrast hierarchy in `docs/DESIGN-SYSTEM.md`; keep neutral, shell, accent, semantic and chart tokens separate.
 - Change the static HTML directly. `.work/` is disposable authoring/verification scratch space, not a source or build dependency.
 - `reference-demo.js` is a fixture adapter, not reusable production behavior. Keep simulated operations visibly identified.
 - Verify affected pages in a browser, including keyboard use, narrow widths and Japanese labels. Preserve all reference pages and no-JS readability.

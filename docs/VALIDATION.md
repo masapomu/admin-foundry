@@ -137,3 +137,9 @@ Grayを標準のまま、Soft blueを比較用に追加。後者はbrand #365c82
 Grayを標準のままDarkを比較テーマとして全21ページに追加。URLの`theme=dark`を描画前に適用し、Bootstrapの暗色部品と独自のsurface・文字・brand・action・semantic色を切り替える。主要操作は青、危険操作は白文字が読める濃い赤とし、状態表示には暗い背景向けの明るい色を使う。ページ遷移とGET検索でもテーマを維持する。
 
 ブラウザーでDarkのDashboard、Users、Forms、Componentsをデスクトップで目視し、フォーム、表、ダイアログ、トースト、ページネーションを確認。390pxではDashboardと日本語比較画面を確認し、横はみ出しなし。アカウントメニューの開閉とEscapeでの閉鎖、日本語トーストの表示も確認。UsersのGET検索で`theme=dark`と検索語の維持を確認。静的チェックは21ページ・642件のローカル参照、主要24色組のコントラスト4.5:1以上でPASS。
+
+## Color & Contrast Modernization Sprint
+
+変更前のDashboardをブラウザーで確認。白いHeader、淡灰Sidebar、淡灰app面が近く、主要な階層が罫線に依存していた。Graphite Blueへ変更後、1280pxでDashboard、Users、System、Logs、Forms、Components、Patterns、i18n、Chartsを目視。Sidebar activeのGraphite面と青indicator、table header/hover、semantic badge、form validation、chart grid/axis/系列を確認。Usersの確認Modal、ComponentsのToast、Chartsのaccount popoverを実際に開き、白いelevated面とshadow/backdropを確認した。
+
+390pxでは同じ9画面を巡回し、いずれも`document.documentElement.scrollWidth`がviewport 390px以下（375px）で、表は個別の横スクロールに収まった。Users、i18nの日本語表と通知、Chartsを目視。Formsでdisplay nameへフォーカスし、3px solidの青outlineを確認。RedとDarkのComponentsも目視し、既存previewの基本動作を確認した。`node tests/static-check.mjs`は22ページ・713件のローカル参照、主要29色組で4.5:1以上。`node tests/charts-check.mjs`もPASS。実運用環境のSafari/Firefox、支援技術、200% zoom等は引き続き人間による追加評価対象。

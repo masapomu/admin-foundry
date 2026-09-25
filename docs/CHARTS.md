@@ -36,7 +36,7 @@ system font、ラベル13px、線2px、薄いgrid 1px。背景は既存panel、r
 | `--ui-chart-height`, `--ui-chart-height-compact`, `--ui-chart-height-mini` | 高さ280 / 200 / 56px |
 
 ## 7. Colors
-light系列色はblue #3b6c9d、ochre #98702e、purple #74649b、teal #347e79、olive #697b44。Darkは対応する明るい色へ切り替える。danger redを無意味な系列に使わない。Gray/Blue/Redでもpaletteは共通で、application brandとsemantic colorsから独立する。navy/green/purpleにもこのpaletteを適用可能。テーマ属性は初期描画前にhostが出力する。動的変更時は`AdminCharts.refresh(canvas)`でtokenを読み直す。
+light系列色はblue #2866a5、teal #287a78、violet #74619b、orange #a4632c、rose #a04f68。Darkは対応する明るい色へ切り替える。danger redを無意味な系列に使わない。Graphite Blue/Soft blue/Muted redでもpaletteは共通で、application accentとsemantic colorsから独立する。navy/green/purpleにもこのpaletteを適用可能。テーマ属性は初期描画前にhostが出力する。動的変更時は`AdminCharts.refresh(canvas)`でtokenを読み直す。
 
 ## 8. Line Chart
 CPUとMemoryの同一percentage scaleを例示。CPUはsolid/circle、Memoryはdashed/diamond。異なる単位を同一軸に混ぜない。初版は複雑なdual axisを提供しない。等間隔の観測ラベルをcategory scaleに置く。不等間隔を等間隔と誤認させないよう、hostが集約し欠測を`null`として表す。日時adapterは追加しない。

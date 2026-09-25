@@ -13,7 +13,7 @@
   document.querySelectorAll('[data-demo-theme-name]').forEach(label => {
     label.textContent = document.querySelector(`[data-demo-theme="${theme}"]`).textContent;
   });
-  if (theme !== 'gray') {
+  if (theme !== 'graphite-blue') {
     // Preserve the visual preview across ordinary links and GET forms.
     document.querySelectorAll('a[href]').forEach(link => {
       if (link.hasAttribute('data-demo-theme') || link.getAttribute('href').startsWith('#')) return;

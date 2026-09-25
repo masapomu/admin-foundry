@@ -2,7 +2,7 @@
 
 複数の管理ツールで再利用する Administration UI Design System / Reference Implementation の初版です。実際の製品ではなく、架空の **Acme Operations** を使った評価用リファレンスです。
 
-**Server-rendered HTML を Bootstrap で現代化する**ことを目的にしています。Modern B2B SaaS Operations Console を方向性とし、落ち着いた Gray、情報密度、整列、控えめな境界線を優先します。
+**Server-rendered HTML を Bootstrap で現代化する**ことを目的にしています。Visual directionは **Modern B2B SaaS Operations Console**、Default Themeは **Graphite Blue**。Graphite shell、明るいcontent面、意味のある青accent、情報密度と整列を優先します。
 
 ## 開き方
 
@@ -67,9 +67,9 @@ CoreはBootstrap / Bootstrap Icons / Vanilla JavaScript。**Optional: Chart.js 4
 
 ## Theme と i18n
 
-Gray が標準です。`data-ui-theme="blue|red|dark|navy|green|purple"` で色を拡張できます。Muted redでは主要操作・リンク・フォーカス色もブランド色に合わせます。DarkではBootstrapの`data-bs-theme="dark"`と暗色用のsurface・文字・状態色を併用します。密度は comfortable が標準で、`data-ui-density="compact"` のトークンも用意しています。
+`data-ui-theme="graphite-blue"` が標準です。Neutral Palette、Shell、Accent、Semantic Colors、Chart Paletteを別々のtokenとして管理します。`blue|red|dark` は比較用presetで、既存の`navy|green|purple`もtoken overrideとして残します。DarkではBootstrapの`data-bs-theme="dark"`と暗色用のsurface・文字・状態色を併用します。密度は comfortable が標準で、`data-ui-density="compact"` のトークンも用意しています。
 
-本文16px、表15px、補助14px、ボタン・入力15pxを標準とします。ページ見出しは26pxです。各ページの「Theme preview」でGray、Soft blue、Muted red、Darkを比較できます。赤系はブランドの鈍い赤と淡いsurfaceを使い、危険操作の明るい赤とは分けています。色の選択は静的デモ専用のURLパラメーターで、画面遷移とGETフォームに引き継がれます。実アプリではhostが`data-ui-theme`と`data-bs-theme`を描画してください。
+本文16px、表15px、補助14px、ボタン・入力15pxを標準とします。ページ見出しは26pxです。各ページの「Theme preview」でGraphite Blue、Soft blue、Muted red、Darkを比較できます。赤系のaccentは危険操作の意味色と分けています。色の選択は静的デモ専用のURLパラメーターで、画面遷移とGETフォームに引き継がれます。実アプリではhostが`data-ui-theme`と`data-bs-theme`を描画してください。
 
 i18nは必須です。翻訳ランタイムには依存しません。文言・複数形・日時・数値の整形はホストが担当し、UTF-8、`html lang`、semantic keys、文字列伸長を設計契約とします。
 
