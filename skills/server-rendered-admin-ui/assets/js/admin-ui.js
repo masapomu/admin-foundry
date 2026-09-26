@@ -99,7 +99,14 @@
       const show = input.type === 'password';
       input.type = show ? 'text' : 'password';
       password.setAttribute('aria-pressed', String(show));
-      password.textContent = show ? password.dataset.labelHide : password.dataset.labelShow;
+      if (password.hasAttribute('data-ui-password-icon')) {
+        password.setAttribute('aria-label', show ? password.dataset.labelHide : password.dataset.labelShow);
+        const icon = one('.bi', password);
+        icon?.classList.toggle('bi-eye', !show);
+        icon?.classList.toggle('bi-eye-slash', show);
+      } else {
+        password.textContent = show ? password.dataset.labelHide : password.dataset.labelShow;
+      }
     }
     const toast = event.target.closest('[data-ui-toast]');
     if (toast) notify(toast.dataset.uiToast);

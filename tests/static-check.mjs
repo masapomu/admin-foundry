@@ -8,7 +8,7 @@ const pageRoot=`${assetRoot}/reference-ui`;
 const files=readdirSync(pageRoot).filter(f=>f.endsWith('.html'));
 const manifest=JSON.parse(readFileSync('plugin.json','utf8'));
 assert.equal(manifest.name,'admin-foundry');
-assert.equal(manifest.version,'0.1.3');
+assert.equal(manifest.version,'0.1.4');
 assert.equal(manifest.homepage,'https://masapomu.github.io/admin-foundry/');
 const codexManifest=JSON.parse(readFileSync('.codex-plugin/plugin.json','utf8'));
 assert.equal(codexManifest.version,manifest.version);
@@ -51,6 +51,7 @@ for(const name of files){
     assert.match(html,/method="post"/,`Server-style sign-in form: ${name}`);
     assert.match(html,/autocomplete="current-password"/,`Password autofill: ${name}`);
     assert.match(html,/\.\.\/css\/login\.css/,`Scoped sign-in styles: ${name}`);
+    assert.match(html,/data-ui-password-icon[^>]+aria-label="[^"]+"[^>]*><i class="bi bi-eye" aria-hidden="true"><\/i><\/button>/,`Accessible eye toggle: ${name}`);
   }
   for(const m of html.matchAll(/\b(?:href|src|action)="([^"]+)"/g)){
     const url=m[1];

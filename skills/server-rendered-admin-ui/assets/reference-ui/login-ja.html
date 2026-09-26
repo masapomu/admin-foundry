@@ -41,7 +41,7 @@
           <form class="ui-auth-form" method="post" action="result.html" data-demo-post="ログインのプレビューです。認証情報は送信されず、セッションも作成されません。">
             <!-- 実アプリはCSRFトークンを出力し、サーバー側で認証する。 -->
             <div class="ui-auth-field"><label class="form-label" for="login-username">ユーザー名</label><input class="form-control" id="login-username" name="username" type="text" autocomplete="username" required></div>
-            <div class="ui-auth-field"><label class="form-label" for="login-password">パスワード</label><div class="ui-auth-password"><input class="form-control" id="login-password" name="password" type="password" autocomplete="current-password" required><button class="btn btn-secondary ui-enhanced-only" type="button" data-ui-password="#login-password" data-label-show="表示" data-label-hide="非表示" aria-pressed="false" aria-controls="login-password">表示</button></div></div>
+            <div class="ui-auth-field"><label class="form-label" for="login-password">パスワード</label><div class="ui-auth-password"><input class="form-control" id="login-password" name="password" type="password" autocomplete="current-password" required><button class="ui-auth-password-toggle ui-enhanced-only" type="button" data-ui-password="#login-password" data-ui-password-icon data-label-show="パスワードを表示" data-label-hide="パスワードを隠す" aria-label="パスワードを表示" aria-pressed="false" aria-controls="login-password"><i class="bi bi-eye" aria-hidden="true"></i></button></div></div>
             <button class="btn btn-primary ui-auth-submit ui-enhanced-only" type="submit">ログイン <i class="bi bi-arrow-right" aria-hidden="true"></i></button>
           </form>
           <noscript><p class="ui-note mt-4">JavaScriptがなくてもフォームは読めます。送信先はホストアプリ側で用意してください。</p></noscript>

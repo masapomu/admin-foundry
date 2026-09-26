@@ -35,9 +35,11 @@
 .ui-auth-field { margin-bottom:20px; }
 .ui-auth-field .form-label { font-weight:600; }
 .ui-auth-field .form-control { min-height:44px; background:var(--ui-surface-panel); }
-.ui-auth-password { display:flex; gap:8px; }
-.ui-auth-password .form-control { min-width:0; }
-.ui-auth-password .btn { flex:none; min-width:70px; }
+.ui-auth-password { position:relative; }
+.ui-auth-password .form-control { padding-right:52px; }
+.ui-js .ui-auth-password-toggle { position:absolute; top:3px; right:3px; width:38px; height:38px; align-items:center; justify-content:center; border:0; border-radius:var(--ui-radius-sm); background:transparent; color:var(--ui-text-secondary); }
+.ui-auth-password-toggle:hover { background:var(--ui-surface-hover); color:var(--ui-text-primary); }
+.ui-auth-password-toggle .bi { font-size:19px; }
 .ui-auth-submit { width:100%; min-height:44px; align-items:center; justify-content:center; gap:12px; margin-top:30px; font-weight:600; }
 .ui-auth-error-example { margin-top:32px; padding-top:20px; border-top:1px solid var(--ui-border-default); }
 .ui-auth-error-example .alert { margin-bottom:10px; }

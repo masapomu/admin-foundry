@@ -50,7 +50,7 @@ Bootstrapのclass/APIを維持し、`admin-ui.css` で視覚を統一する。�
 - `.offcanvas`: Bootstrap APIのまま。read-only内容と通常の詳細ページへのリンク。
 - `#ui-toast`: 事前に存在するpolite live region内。表示文は`data-ui-toast`から取得。画面右下（狭幅では左右に余白を設けた下部）に幅広く表示し、下端の細いバーで残り時間を示して5秒後に自動で閉じる。マウスやフォーカスがある間は維持し、離れたら5秒から数え直す。閉じるボタンも用意する。
 - `data-ui-copy="#id"`: 対象のtextContentをコピー。success/error属性必須。成功時はtoastと同時にボタン内のcopy iconを緑のcheckへ約2秒切り替え、連続コピーでは表示時間を更新する。icon-onlyボタンのaria-labelも成功文に一時変更して戻す。失敗時はcheckを残さずerror通知のみを表示する。
-- `data-ui-password="#id"`: 表示/非表示の翻訳ラベル、aria-pressed。
+- `data-ui-password="#id"`: 表示/非表示の翻訳ラベル、aria-pressed。アイコンのみの場合は `data-ui-password-icon`、装飾用の `bi-eye`、翻訳済みの `aria-label` を付ける。切替時に `bi-eye-slash` と読み上げ名を更新する。
 - `data-ui-bulk`: 同一form内のcheckbox、select all、件数、操作。
 - `data-ui-unsaved`: 入力変更後の離脱警告。ブラウザーが文面を決める。resetで解除。
 
