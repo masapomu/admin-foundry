@@ -12,6 +12,17 @@ AdminFoundry combines a design system, canonical HTML/CSS/JavaScript reference i
 
 Modern UI does not require React, a SPA, client-side routing, a Node runtime, or a CDN. This project is for PHP, ASP.NET/Razor, Perl, Python, and similar applications that render HTML on the server. JavaScript progressively enhances the page; the host remains responsible for routing, data, authentication, CSRF, validation, and translation.
 
+## How to install in Codex
+
+Add this repository's plugin marketplace, then install AdminFoundry:
+
+```text
+codex plugin marketplace add masapomu/admin-foundry --ref main
+codex plugin add admin-foundry@admin-foundry-local
+```
+
+Start a new Codex task and ask it to use the `admin-foundry:server-rendered-admin-ui` skill to design, implement, or review a server-rendered admin UI. The skill and reference implementation are included with the plugin; no separate skill installation is needed. This repository's marketplace is for direct GitHub installation, not a listing in the official public Plugins Directory.
+
 ## Preview
 
 The showcase opens the canonical reference UI as a static demo. Actions are simulated; nothing is saved or sent to a backend.
@@ -53,17 +64,6 @@ Open `skills/server-rendered-admin-ui/assets/reference-ui/index.html` in a brows
 The skill supports **Design**, **Implement**, and **Review** workflows. It routes each task to the relevant canonical page and only the needed design rule, so a Users task need not load every page or document. The root [plugin.json](plugin.json) is the portable Agent Plugins manifest; `.codex-plugin/plugin.json` is a Codex compatibility fallback. This is a skills-only plugin with no MCP server, account connection, or external API.
 
 This English README is the canonical source for project facts. Keep [README.ja.md](README.ja.md) semantically aligned when those facts change.
-
-### Install in Codex
-
-This repository includes a small [marketplace catalog](.agents/plugins/marketplace.json) for installing AdminFoundry from its GitHub repository. It is a distribution and testing catalog, not a listing in the official public Plugins Directory.
-
-```text
-codex plugin marketplace add masapomu/admin-foundry --ref main
-codex plugin add admin-foundry@admin-foundry-local
-```
-
-Start a new Codex task after installation so the `server-rendered-admin-ui` skill is available. Future repository changes can be picked up by refreshing the marketplace and reinstalling the plugin.
 
 ### Example prompts
 

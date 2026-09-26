@@ -16,6 +16,7 @@
     <div class="container-fluid site-header-inner">
       <a class="brand" href="./" aria-label="AdminFoundry home"><span class="brand-mark"><i class="bi bi-intersect" aria-hidden="true"></i></span>AdminFoundry</a>
       <nav class="header-links" aria-label="Project links">
+        <a href="#install">Install</a>
         <a href="#preview">Preview</a>
         <a href="#pages">Pages</a>
         <a href="https://github.com/masapomu/admin-foundry">GitHub <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
@@ -33,6 +34,18 @@
         <a class="action secondary" href="https://github.com/masapomu/admin-foundry">View on GitHub <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i></a>
       </div>
       <p class="readme-links"><a href="https://github.com/masapomu/admin-foundry/blob/main/README.md">English README</a><span aria-hidden="true">·</span><a href="https://github.com/masapomu/admin-foundry/blob/main/README.ja.md" lang="ja">日本語 README</a></p>
+    </section>
+
+    <section class="install-section container-fluid" id="install" aria-labelledby="install-title">
+      <div class="install-copy">
+        <p class="eyebrow">Get started</p>
+        <h2 id="install-title">How to install in Codex</h2>
+        <p>Add the AdminFoundry marketplace, then install the plugin. The <code>admin-foundry:server-rendered-admin-ui</code> skill and reference UI come bundled with it.</p>
+        <p>Start a new Codex task and ask it to use the skill for a server-rendered admin UI. No separate skill installation is needed.</p>
+        <p class="install-note">Direct GitHub installation; this is not a listing in the official public Plugins Directory.</p>
+      </div>
+      <pre class="install-commands"><code>codex plugin marketplace add masapomu/admin-foundry --ref main
+codex plugin add admin-foundry@admin-foundry-local</code></pre>
     </section>
 
     <section class="feature-strip" aria-label="Project qualities">

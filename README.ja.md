@@ -12,6 +12,17 @@ AdminFoundryは、PHP、ASP.NETなどのPOSTバック型アプリに向けた、
 
 現代的なUIを作るために、React、SPA、クライアント側ルーター、実行時のNode、CDNが必須とは限りません。対象はPHP、ASP.NET/Razor、Perl、Pythonなど、サーバーでHTMLを描画するアプリです。JavaScriptは画面を補助し、ルーティング、データ、認証、CSRF、検証、翻訳はホストアプリが担当します。
 
+## Codexへのインストール方法
+
+このリポジトリのPluginカタログを追加し、AdminFoundryをインストールします。
+
+```text
+codex plugin marketplace add masapomu/admin-foundry --ref main
+codex plugin add admin-foundry@admin-foundry-local
+```
+
+新しいCodexタスクを開始し、`admin-foundry:server-rendered-admin-ui` Skillを使ってサーバー描画の管理UIを設計・実装・レビューするよう依頼してください。SkillとReference UIはPluginに同梱されており、Skillを別途インストールする必要はありません。このリポジトリのカタログはGitHubから直接導入するためのもので、公式公開Pluginディレクトリへの掲載ではありません。
+
 ## Preview
 
 Showcaseから、実装の基準となるReference UIを静的Demoとして試せます。操作は模擬動作で、データを保存したりバックエンドへ送信したりしません。
@@ -53,17 +64,6 @@ Showcaseから、実装の基準となるReference UIを静的Demoとして試�
 Skillは**Design**、**Implement**、**Review**に対応します。作業に関係するReferenceページと規約だけを読む構成なので、Users画面の作業で全文書・全ページを読み込む必要はありません。ルートの [plugin.json](plugin.json) がportable Agent Plugins形式のmanifestで、`.codex-plugin/plugin.json` はCodex向けの互換用です。MCPサーバー、アカウント接続、外部APIを持たないskills-only Pluginです。
 
 プロジェクトの事実情報は英語版 [README.md](README.md) を正本とします。変更時には、この日本語版も意味が揃うよう更新してください。
-
-### Codexへのインストール
-
-このリポジトリには、GitHub上のAdminFoundryをインストールするための小さな[登録カタログ](.agents/plugins/marketplace.json)を同梱しています。配布・動作確認用のカタログであり、公式公開Pluginディレクトリへの掲載ではありません。
-
-```text
-codex plugin marketplace add masapomu/admin-foundry --ref main
-codex plugin add admin-foundry@admin-foundry-local
-```
-
-インストール後に新しいCodexタスクを開始すると、`server-rendered-admin-ui` Skillを利用できます。後でリポジトリを更新した場合は、カタログを更新してPluginを再インストールしてください。
 
 ### 利用例
 

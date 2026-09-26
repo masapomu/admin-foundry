@@ -1,6 +1,6 @@
 {
   "name": "admin-foundry",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Offline-ready admin UI design system and Codex skill for server-rendered web apps.",
   "license": "MIT",
   "author": {
@@ -12,6 +12,7 @@
     "shortDescription": "Canonical B2B administration UI patterns",
     "longDescription": "Use the AdminFoundry design system and canonical reference implementation to design, build, and review server-rendered administration interfaces.",
     "developerName": "masapomu",
+    "websiteURL": "https://masapomu.github.io/admin-foundry/",
     "category": "Productivity",
     "capabilities": ["Read", "Write"],
     "defaultPrompt": ["Design a server-rendered admin console using the canonical reference.", "Review my admin UI against the reference design system."]
