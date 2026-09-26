@@ -5,6 +5,7 @@
 - `header` / `nav` / `main` / `aside` / `footer`、1つのh1、段階的な見出し。
 - Skip to contentからmainへ移動。focus outlineは3px、背景から判別できる青。
 - inputはlabel、helper/errorはaria-describedby。required/readonly/disabledをnative属性で表現。
+- ログインは公開画面のままキーボードで入力・送信できる構成にし、パスワード表示切替は任意機能。認証失敗を消えるtoastだけで知らせず、サーバーが持続するalertと必要なfield errorを出す。
 - field errorはaria-invalid、summaryから該当fieldへリンク。
 - 表はcaption、scope=col。横scroll領域に名前とtabindexを付け、キーボードで利用可能にする。
 - icon-onlyはaria-label。装飾Bootstrap Iconsはaria-hidden。

@@ -51,7 +51,7 @@ Showcaseから、実装の基準となるReference UIを静的Demoとして試�
 
 ## Reference UI
 
-[Referenceページ](skills/server-rendered-admin-ui/assets/reference-ui/index.html)には、Dashboard/KPI、Users/CRUDテーブル、Systemの稼働状態、密度の高いLogsとフィルター、Formsと検証、Bootstrap Components、読み込み・空・エラー状態、i18n、任意のChartsが含まれます。詳細、ページ送り、送信結果、アカウント設定のページで一連の流れも確認できます。自作のCSSとJavaScriptはHTMLとともに `skills/server-rendered-admin-ui/assets/` に置いています。
+[Referenceページ](skills/server-rendered-admin-ui/assets/reference-ui/index.html)には、ログイン、Dashboard/KPI、Users/CRUDテーブル、Systemの稼働状態、密度の高いLogsとフィルター、Formsと検証、Bootstrap Components、読み込み・空・エラー状態、i18n、任意のChartsが含まれます。詳細、ページ送り、送信結果、アカウント設定のページで一連の流れも確認できます。自作のCSSとJavaScriptはHTMLとともに `skills/server-rendered-admin-ui/assets/` に置いています。
 
 `skills/server-rendered-admin-ui/assets/reference-ui/index.html` をブラウザーで開くか、任意のローカル静的サーバーで配信してください。vendorアセットを同梱しているため、インターネット、Node/npmのビルド、バックエンドなしで表示できます。デモ操作は模擬動作で、データの保存や削除はしません。実アプリへ適用するときはReferenceのHTML/CSSを出発点とし、模擬処理をサーバー側の処理へ置き換えてください。
 
@@ -130,6 +130,6 @@ docs/images/                        READMEとShowcaseのスクリーンショッ
 .github/workflows/pages.yml         GitHub Pagesのartifact・デプロイworkflow
 ```
 
-現在は**0.1.0の初期リリース前**で、Plugin Directoryには未公開です。Bootstrap、Bootstrap Icons、Chart.jsと関連ライブラリのライセンスは [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) を参照してください。AdminFoundryの自作コードと文書は [MITライセンス](LICENSE) で、第三者配布物にはそれぞれのライセンスが適用されます。
+現在は**0.1.2のプレリリース**で、Plugin Directoryには未公開です。Bootstrap、Bootstrap Icons、Chart.jsと関連ライブラリのライセンスは [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) を参照してください。AdminFoundryの自作コードと文書は [MITライセンス](LICENSE) で、第三者配布物にはそれぞれのライセンスが適用されます。
 
-Pagesと同じartifactをローカルで確認するには、新しいcheckoutで `pwsh -File site/build-pages.ps1` を実行し、`.work/pages/` を任意の静的サーバーで配信してください。スクリプトはcanonical Reference UIとローカルのCSS、JavaScript、アイコン、vendorアセットを一時的な公開ディレクトリへコピーします。ソースは一か所のままです。公開時はリポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** に設定してください。予定URLは `https://masapomu.github.io/admin-foundry/` です。workflowをコミットしてPagesを有効にした後に利用できます。
+Pagesと同じartifactをローカルで確認するには、新しいcheckoutで `pwsh -File site/build-pages.ps1` を実行し、`.work/pages/` を任意の静的サーバーで配信してください。スクリプトはcanonical Reference UIとローカルのCSS、JavaScript、アイコン、vendorアセットを一時的な公開ディレクトリへコピーします。ソースは一か所のままです。ShowcaseはGitHub Actionsによって [masapomu.github.io/admin-foundry](https://masapomu.github.io/admin-foundry/) に公開されています。

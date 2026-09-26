@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja" data-ui-theme="graphite-blue" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>ログイン · AdminFoundry</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../vendor/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="../vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../css/admin-ui.css">
+  <link rel="stylesheet" href="../css/login.css">
+  <script defer src="../vendor/bootstrap/bootstrap.bundle.min.js"></script>
+  <script defer src="../js/admin-ui.js"></script>
+  <script defer src="../js/reference-demo.js"></script>
+</head>
+<body class="ui-auth-page">
+  <a class="ui-skip" href="#main">ログイン画面へ移動</a>
+  <div class="ui-auth-shell">
+    <aside class="ui-auth-brand" aria-label="Acme Operations">
+      <div class="ui-auth-brand-inner">
+        <a class="ui-auth-wordmark" href="index.html"><span class="ui-brand-mark"><i class="bi bi-intersect" aria-hidden="true"></i></span>Acme Operations</a>
+        <div class="ui-auth-brand-copy">
+          <span class="ui-auth-product">Acme Operations</span>
+          <span class="ui-auth-eyebrow">管理画面</span>
+          <p>ワークスペースをひとつの場所で管理します。</p>
+        </div>
+        <p class="ui-auth-brand-footer"><i class="bi bi-shield-lock" aria-hidden="true"></i> 許可されたユーザーのみ利用できます</p>
+      </div>
+    </aside>
+    <div class="ui-auth-content">
+      <header class="ui-auth-topbar">
+        <div class="ui-auth-themes" role="group" aria-label="カラーテーマのプレビュー"><span><i class="bi bi-palette" aria-hidden="true"></i> テーマ</span><a href="?theme=graphite-blue" data-demo-theme="graphite-blue" aria-current="true">Graphite Blue</a><a href="?theme=sapphire-blue" data-demo-theme="sapphire-blue">Sapphire Blue</a><a href="?theme=garnet-red" data-demo-theme="garnet-red">Garnet Red</a><a href="?theme=aqua-ivory" data-demo-theme="aqua-ivory">Aqua Ivory</a><a href="?theme=dark" data-demo-theme="dark">Dark</a></div>
+        <a class="ui-auth-language" href="login.html" lang="en"><i class="bi bi-translate" aria-hidden="true"></i> English</a>
+      </header>
+      <main class="ui-auth-main" id="main" tabindex="-1">
+        <div class="ui-auth-form-wrap">
+          <div class="ui-auth-heading"><span class="ui-auth-heading-icon"><i class="bi bi-person-lock" aria-hidden="true"></i></span><h1>ログイン</h1><p>アカウント情報を入力してください。</p></div>
+          <div class="alert alert-info" role="status">静的リファレンスです。認証やセッションの作成は行いません。</div>
+          <form class="ui-auth-form" method="post" action="result.html" data-demo-post="ログインのプレビューです。認証情報は送信されず、セッションも作成されません。">
+            <!-- 実アプリはCSRFトークンを出力し、サーバー側で認証する。 -->
+            <div class="ui-auth-field"><label class="form-label" for="login-username">ユーザー名</label><input class="form-control" id="login-username" name="username" type="text" autocomplete="username" required></div>
+            <div class="ui-auth-field"><label class="form-label" for="login-password">パスワード</label><div class="ui-auth-password"><input class="form-control" id="login-password" name="password" type="password" autocomplete="current-password" required><button class="btn btn-secondary ui-enhanced-only" type="button" data-ui-password="#login-password" data-label-show="表示" data-label-hide="非表示" aria-pressed="false" aria-controls="login-password">表示</button></div></div>
+            <button class="btn btn-primary ui-auth-submit ui-enhanced-only" type="submit">ログイン <i class="bi bi-arrow-right" aria-hidden="true"></i></button>
+          </form>
+          <noscript><p class="ui-note mt-4">JavaScriptがなくてもフォームは読めます。送信先はホストアプリ側で用意してください。</p></noscript>
+          <details class="ui-auth-error-example"><summary>ログイン失敗時の表示例</summary><div class="alert alert-danger mt-3" role="alert"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> ログインできませんでした。入力内容を確認して、もう一度お試しください。</div><p class="ui-note">POSTに失敗した場合はサーバーがこのメッセージを表示します。パスワードを再表示しません。</p></details>
+          <p class="ui-auth-back"><a href="index.html"><i class="bi bi-arrow-left" aria-hidden="true"></i> リファレンス一覧</a></p>
+        </div>
+      </main>
+    </div>
+  </div>
+  <div class="toast-container position-fixed ui-toast-container" aria-live="polite" aria-atomic="true"><div class="toast" id="ui-toast" role="status"><div class="d-flex"><div class="toast-body"></div><button type="button" class="btn-close me-3 m-auto" data-bs-dismiss="toast" aria-label="通知を閉じる"></button></div></div></div>
+</body>
+</html>

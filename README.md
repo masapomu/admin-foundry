@@ -51,7 +51,7 @@ The showcase opens the canonical reference UI as a static demo. Actions are simu
 
 ## Reference UI
 
-The [reference pages](skills/server-rendered-admin-ui/assets/reference-ui/index.html) cover Dashboard/KPIs, Users/CRUD tables, System status, dense Logs and filters, Forms and validation, Bootstrap Components, loading/empty/error Patterns, i18n, and optional Charts. Linked detail, pagination, result, and account pages show complete flows. The canonical authored styles and behaviors live beside the HTML under `skills/server-rendered-admin-ui/assets/`.
+The [reference pages](skills/server-rendered-admin-ui/assets/reference-ui/index.html) cover Sign-in, Dashboard/KPIs, Users/CRUD tables, System status, dense Logs and filters, Forms and validation, Bootstrap Components, loading/empty/error Patterns, i18n, and optional Charts. Linked detail, pagination, result, and account pages show complete flows. The canonical authored styles and behaviors live beside the HTML under `skills/server-rendered-admin-ui/assets/`.
 
 Open `skills/server-rendered-admin-ui/assets/reference-ui/index.html` in a browser or serve the repository with any static localhost server. The included vendor assets keep this reference runnable offline; no Node/npm build or backend is needed. Demo actions are simulated and do not save or delete data. When integrating with a real host, use the reference HTML/CSS as a starting point and replace demo fixtures with server behavior.
 
@@ -130,6 +130,6 @@ docs/images/                        README and showcase screenshots
 .github/workflows/pages.yml         GitHub Pages artifact and deployment workflow
 ```
 
-This is a **0.1.0 prerelease** and has not been published to a plugin directory. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for Bootstrap, Bootstrap Icons, Chart.js, and transitive license information. AdminFoundry-authored code and documentation are [MIT licensed](LICENSE); third-party distributions retain their own licenses.
+This is a **0.1.2 prerelease** and has not been published to a plugin directory. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for Bootstrap, Bootstrap Icons, Chart.js, and transitive license information. AdminFoundry-authored code and documentation are [MIT licensed](LICENSE); third-party distributions retain their own licenses.
 
-To preview the Pages artifact locally, run `pwsh -File site/build-pages.ps1` from a fresh checkout and serve `.work/pages/` with any static server. The script copies the canonical reference UI and its local CSS, JavaScript, icons, and vendor assets into a disposable publish directory; the source pages remain in one place. For deployment, set the repository's **Settings → Pages → Build and deployment → Source** to **GitHub Actions**. The planned project site URL is `https://masapomu.github.io/admin-foundry/`; it will work after the workflow is committed and Pages is enabled.
+To preview the Pages artifact locally, run `pwsh -File site/build-pages.ps1` from a fresh checkout and serve `.work/pages/` with any static server. The script copies the canonical reference UI and its local CSS, JavaScript, icons, and vendor assets into a disposable publish directory; the source pages remain in one place. The showcase is published at [masapomu.github.io/admin-foundry](https://masapomu.github.io/admin-foundry/) using GitHub Actions.

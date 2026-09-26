@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "admin-foundry",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Offline-ready admin UI design system and Codex skill for server-rendered PHP, ASP.NET, and other postback-style web apps. No CDN required.",
   "author": { "name": "masapomu" },
   "repository": "https://github.com/masapomu/admin-foundry",

@@ -2,6 +2,12 @@
 
 PHP、ASP.NET/Razor、Perl CGI/PSGI、Python templatesなどへ共通に適用する契約。特定のフレームワーク、JSON API、ルーターは要求しない。
 
+## Sign-in
+
+[`login.html`](../assets/reference-ui/login.html) と [`login-ja.html`](../assets/reference-ui/login-ja.html) は、Glasswalkで使われた二領域レイアウトを汎用化した認証入口の静的Reference。`admin-ui.css` のtheme tokenに追加の [`login.css`](../assets/css/login.css) を重ねる。ブランド文言、ロゴ、認証方法、言語選択の保存方法はhostが差し替える。静的版の送信はfixtureであり、認証やセッション作成をしない。
+
+実アプリでは `GET /login` が翻訳済みHTML、実際のCSRF token、適切なフォームactionを描画し、`POST /login` がCSRF、レート制限、認証をサーバー側で検証する。成功時はセッションIDを更新して安全な遷移先へ303、失敗時は一般的なエラーをformと共に再描画する。パスワードをHTMLへ再出力せず、詳細な失敗理由でアカウントの存在を明かさない。セキュアなcookie設定とセッション期限はhostの責務。静的版のsubmitは送信を防ぐため `ui-enhanced-only` だが、実アプリではこのclassと `data-demo-post` を外してJSなしでもPOSTできるようにする。表示/非表示の切替は任意の補助機能。言語切替をPOSTにするならCSRFと戻り先の検証をhostが担当し、公開ログイン画面の選択肢が認証済みAPIを前提にしないようにする。
+
 ## GET page / search / filter
 
 ```text

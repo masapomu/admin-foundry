@@ -51,11 +51,11 @@ for (const name of ['README.md', 'README.ja.md']) {
     if (!existsSync(resolve(root, value.split('#')[0]))) failures.push(`${name}: missing ${value}`);
   }
 }
-const expected = ['dashboard', 'users', 'system', 'logs', 'forms', 'components', 'patterns', 'i18n', 'charts'];
+const expected = ['login', 'login-ja', 'dashboard', 'users', 'system', 'logs', 'forms', 'components', 'patterns', 'i18n', 'charts'];
 for (const name of expected) if (!existsSync(join(artifact, 'demo', `${name}.html`))) failures.push(`missing demo/${name}.html`);
 if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;
 } else {
-  console.log(`Pages links OK: ${pages.length} HTML pages, ${allFiles.length} files; README links and nine featured demos present.`);
+  console.log(`Pages links OK: ${pages.length} HTML pages, ${allFiles.length} files; README links and eleven reference entry pages present.`);
 }

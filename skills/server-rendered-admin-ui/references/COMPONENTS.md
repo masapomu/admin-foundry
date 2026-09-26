@@ -40,6 +40,7 @@ Bootstrapのclass/APIを維持し、`admin-ui.css` で視覚を統一する。�
 
 ## Markup contracts
 
+- `.ui-auth-shell`: ログイン専用のブランド領域とフォーム領域。`assets/css/login.css` を `admin-ui.css` の後に読み、認証処理はhostのPOSTに委ねる。静的例は `login.html` / `login-ja.html`。
 - `.ui-page-header`: h1 / description / `.ui-actions`。card wrapper不要。
 - `.ui-account-menu`: ヘッダー右上のnative `details`。個人設定への通常リンクとログアウトのプレビューを含む。実アプリのログアウトはホストがPOSTで処理する。
 - `.ui-toolbar`: `form method=get`、label付きinput/select、submitとreset link。

@@ -8,7 +8,7 @@ const pageRoot=`${assetRoot}/reference-ui`;
 const files=readdirSync(pageRoot).filter(f=>f.endsWith('.html'));
 const manifest=JSON.parse(readFileSync('plugin.json','utf8'));
 assert.equal(manifest.name,'admin-foundry');
-assert.equal(manifest.version,'0.1.1');
+assert.equal(manifest.version,'0.1.2');
 assert.equal(manifest.homepage,'https://masapomu.github.io/admin-foundry/');
 const codexManifest=JSON.parse(readFileSync('.codex-plugin/plugin.json','utf8'));
 assert.equal(codexManifest.version,manifest.version);
@@ -35,7 +35,7 @@ for(const name of files){
 }
 for(const name of files){
   const html=readFileSync(`${pageRoot}/${name}`,'utf8');
-  assert.match(html,/<html[^>]+lang="en"/);
+  assert.match(html,/<html[^>]+lang="(?:en|ja)"/);
   assert.match(html,/<meta charset="utf-8">/);
   assert.match(html,/<script src="\.\.\/js\/theme-init\.js"><\/script>/,`Early theme setup: ${name}`);
   assert.match(html,/<html[^>]+data-ui-theme="graphite-blue"/,`Default Graphite Blue: ${name}`);
@@ -46,7 +46,12 @@ for(const name of files){
   assert.match(html,/<a href="\?theme=dark" data-demo-theme="dark">Dark<\/a>/,`Dark theme preview: ${name}`);
   assert.doesNotMatch(html,/Soft blue|Muted red|\?theme=(?:blue|red)"/,`Retired preview: ${name}`);
   assert.equal((html.match(/<h1[ >]/g)||[]).length,1,`h1 count: ${name}`);
-  assert.equal((html.match(/id="ui-dialog"/g)||[]).length,1,`Shared dialog: ${name}`);
+  assert.equal((html.match(/id="ui-dialog"/g)||[]).length,name.startsWith('login')?0:1,`Shared dialog: ${name}`);
+  if(name.startsWith('login')) {
+    assert.match(html,/method="post"/,`Server-style sign-in form: ${name}`);
+    assert.match(html,/autocomplete="current-password"/,`Password autofill: ${name}`);
+    assert.match(html,/\.\.\/css\/login\.css/,`Scoped sign-in styles: ${name}`);
+  }
   for(const m of html.matchAll(/\b(?:href|src|action)="([^"]+)"/g)){
     const url=m[1];
     assert(!/^(?:https?:)?\/\//.test(url),`Remote dependency: ${name}: ${url}`);
@@ -71,7 +76,7 @@ for(const name of files){
     assert(id&&html.includes(`for="${id}"`),`Unlabeled input: ${name}: ${m[0]}`);
   }
 }
-for(const file of [`${assetRoot}/css/admin-ui.css`,`${assetRoot}/vendor/bootstrap/bootstrap.min.css`,`${assetRoot}/vendor/bootstrap-icons/bootstrap-icons.min.css`]){
+for(const file of [`${assetRoot}/css/admin-ui.css`,`${assetRoot}/css/login.css`,`${assetRoot}/vendor/bootstrap/bootstrap.min.css`,`${assetRoot}/vendor/bootstrap-icons/bootstrap-icons.min.css`]){
   const css=readFileSync(file,'utf8');
   for(const m of css.matchAll(/url\(([^)]+)\)/g)){
     const value=m[1].replace(/^['"]|['"]$/g,'');
