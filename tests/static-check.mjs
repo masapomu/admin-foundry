@@ -8,7 +8,7 @@ const pageRoot=`${assetRoot}/reference-ui`;
 const files=readdirSync(pageRoot).filter(f=>f.endsWith('.html'));
 const manifest=JSON.parse(readFileSync('plugin.json','utf8'));
 assert.equal(manifest.name,'admin-foundry');
-assert.equal(manifest.version,'0.1.4');
+assert.equal(manifest.version,'0.1.5');
 assert.equal(manifest.homepage,'https://masapomu.github.io/admin-foundry/');
 const codexManifest=JSON.parse(readFileSync('.codex-plugin/plugin.json','utf8'));
 assert.equal(codexManifest.version,manifest.version);
@@ -55,6 +55,8 @@ for(const name of files){
   }
   for(const m of html.matchAll(/\b(?:href|src|action)="([^"]+)"/g)){
     const url=m[1];
+    // The showcase return link is navigation, never a runtime dependency.
+    if(m[0].startsWith('href=') && url==='https://masapomu.github.io/admin-foundry/') { references++; continue; }
     assert(!/^(?:https?:)?\/\//.test(url),`Remote dependency: ${name}: ${url}`);
     if(url.startsWith('data:')) continue;
     const [fileQuery,fragment]=url.split('#');

@@ -51,6 +51,7 @@
             <a href="forms.html" ><i class="bi bi-sliders2" aria-hidden="true"></i><span>Forms</span></a><a href="components.html" ><i class="bi bi-grid" aria-hidden="true"></i><span>Components</span></a><a href="charts.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Charts</span></a><a href="patterns.html" ><i class="bi bi-layers" aria-hidden="true"></i><span>State patterns</span></a><a href="i18n.html" ><i class="bi bi-translate" aria-hidden="true"></i><span>Internationalization</span></a>
           </nav>
         </div>
+        <a class="ui-sidebar-return" href="https://masapomu.github.io/admin-foundry/"><i class="bi bi-arrow-left" aria-hidden="true"></i><span>Back to GitHub Pages</span></a>
         <div class="ui-sidebar-foot">
           <strong>AdminFoundry</strong>
           <p class="mb-2">
@@ -86,19 +87,19 @@
             <caption class="visually-hidden">More workspace users</caption>
             <thead>
               <tr>
-                <th scope="col">
-                  Name
+                <th scope="col" data-sort-column="name">
+                  <a class="ui-sort-link" href="?sort=name&amp;dir=asc" data-demo-sort="name"><span>Name</span><i class="bi bi-arrow-down-up" aria-hidden="true"></i></a>
                 </th>
-                <th scope="col">
-                  Role
+                <th scope="col" data-sort-column="role">
+                  <a class="ui-sort-link" href="?sort=role&amp;dir=asc" data-demo-sort="role"><span>Role</span><i class="bi bi-arrow-down-up" aria-hidden="true"></i></a>
                 </th>
-                <th scope="col">
-                  Status
+                <th scope="col" data-sort-column="status">
+                  <a class="ui-sort-link" href="?sort=status&amp;dir=asc" data-demo-sort="status"><span>Status</span><i class="bi bi-arrow-down-up" aria-hidden="true"></i></a>
                 </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr data-fixture-row data-type="viewer" data-status="enabled">
                 <td>
                   Casey Reed
                 </td>
@@ -109,7 +110,7 @@
                   <span class="ui-status ui-status-success">Enabled</span>
                 </td>
               </tr>
-              <tr>
+              <tr data-fixture-row data-type="operator" data-status="disabled">
                 <td>
                   Taylor Park
                 </td>
@@ -124,7 +125,7 @@
           </table>
         </div>
         <div class="ui-table-footer">
-          <span>2 users · page 2 of 2</span>
+          <span>2 users · page 2 of 2<br><small>Static preview: sorting affects rows on this page only.</small></span>
           <nav aria-label="Pagination">
             <ul class="pagination mb-0">
               <li class="page-item">

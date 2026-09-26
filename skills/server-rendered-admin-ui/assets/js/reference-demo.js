@@ -59,4 +59,39 @@
     document.querySelectorAll('[data-result-count]').forEach(el => { el.textContent = String(count); });
     document.querySelector('[data-no-results]').hidden = count !== 0;
   });
+  const sortLinks = document.querySelectorAll('[data-demo-sort]');
+  if (sortLinks.length) {
+    const params = new URLSearchParams(location.search);
+    const allowed = new Set(['name', 'role', 'status', 'active']);
+    const sort = allowed.has(params.get('sort')) ? params.get('sort') : '';
+    const direction = params.get('dir') === 'desc' ? 'desc' : 'asc';
+    sortLinks.forEach(link => {
+      const column = link.dataset.demoSort;
+      const active = column === sort;
+      const target = new URL(location.href);
+      target.searchParams.set('sort', column);
+      target.searchParams.set('dir', active && direction === 'asc' ? 'desc' : 'asc');
+      target.searchParams.delete('page');
+      link.href = target.href;
+      link.querySelector('.bi').className = `bi bi-${active ? (direction === 'asc' ? 'arrow-up' : 'arrow-down') : 'arrow-down-up'}`;
+      if (active) link.closest('th').setAttribute('aria-sort', direction === 'asc' ? 'ascending' : 'descending');
+    });
+    if (sort) {
+      const body = document.querySelector('[data-fixture-row]')?.closest('tbody');
+      if (body) {
+        const rows = [...body.querySelectorAll('[data-fixture-row]')];
+        const collator = new Intl.Collator(document.documentElement.lang || 'en', { numeric:true, sensitivity:'base' });
+        const value = row => sort === 'name' ? (row.querySelector('.ui-person strong') || row.cells[0]).textContent.trim()
+          : sort === 'role' ? row.dataset.type
+          : sort === 'status' ? row.dataset.status : row.dataset.sortActive;
+        rows.sort((a, b) => {
+          const first = value(a), second = value(b);
+          if (sort === 'active' && (!first || !second)) return first ? -1 : second ? 1 : 0;
+          const order = collator.compare(first, second);
+          return direction === 'asc' ? order : -order;
+        });
+        body.append(...rows);
+      }
+    }
+  }
 })();

@@ -51,6 +51,7 @@
             <a href="forms.html" ><i class="bi bi-sliders2" aria-hidden="true"></i><span>Forms</span></a><a href="components.html" ><i class="bi bi-grid" aria-hidden="true"></i><span>Components</span></a><a href="charts.html"><i class="bi bi-bar-chart-line" aria-hidden="true"></i><span>Charts</span></a><a href="patterns.html" ><i class="bi bi-layers" aria-hidden="true"></i><span>State patterns</span></a><a href="i18n.html" ><i class="bi bi-translate" aria-hidden="true"></i><span>Internationalization</span></a>
           </nav>
         </div>
+        <a class="ui-sidebar-return" href="https://masapomu.github.io/admin-foundry/"><i class="bi bi-arrow-left" aria-hidden="true"></i><span>Back to GitHub Pages</span></a>
         <div class="ui-sidebar-foot">
           <strong>AdminFoundry</strong>
           <p class="mb-2">
@@ -83,6 +84,8 @@
           </div>
         </noscript>
         <form class="ui-toolbar" method="get" action="users.html" data-demo-filter>
+          <input type="hidden" name="sort" value="">
+          <input type="hidden" name="dir" value="">
           <div class="ui-search">
             <label class="form-label" for="q">Search users</label><input class="form-control" type="search" id="q" name="q" placeholder="Name or email address">
           </div>
@@ -107,17 +110,17 @@
                     <th scope="col">
                       <input type="checkbox" class="form-check-input" data-select-all aria-label="Select all users">
                     </th>
-                    <th scope="col">
-                      Name / email
+                    <th scope="col" data-sort-column="name">
+                      <a class="ui-sort-link" href="?sort=name&amp;dir=asc" data-demo-sort="name"><span>Name / email</span><i class="bi bi-arrow-down-up" aria-hidden="true"></i></a>
                     </th>
-                    <th scope="col">
-                      Role
+                    <th scope="col" data-sort-column="role">
+                      <a class="ui-sort-link" href="?sort=role&amp;dir=asc" data-demo-sort="role"><span>Role</span><i class="bi bi-arrow-down-up" aria-hidden="true"></i></a>
                     </th>
-                    <th scope="col">
-                      Status
+                    <th scope="col" data-sort-column="status">
+                      <a class="ui-sort-link" href="?sort=status&amp;dir=asc" data-demo-sort="status"><span>Status</span><i class="bi bi-arrow-down-up" aria-hidden="true"></i></a>
                     </th>
-                    <th scope="col">
-                      Last active (UTC)
+                    <th scope="col" data-sort-column="active">
+                      <a class="ui-sort-link" href="?sort=active&amp;dir=asc" data-demo-sort="active"><span>Last active (UTC)</span><i class="bi bi-arrow-down-up" aria-hidden="true"></i></a>
                     </th>
                     <th scope="col">
                       Actions
@@ -125,7 +128,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr data-fixture-row data-status="enabled" data-type="administrator">
+                  <tr data-fixture-row data-status="enabled" data-type="administrator" data-sort-active="2026-09-25T09:40:00Z">
                     <td>
                       <input type="checkbox" class="form-check-input" name="ids" value="1" data-row-select aria-label="Select Alex Morgan">
                     </td>
@@ -170,7 +173,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-fixture-row data-status="enabled" data-type="operator">
+                  <tr data-fixture-row data-status="enabled" data-type="operator" data-sort-active="2026-09-25T09:32:00Z">
                     <td>
                       <input type="checkbox" class="form-check-input" name="ids" value="2" data-row-select aria-label="Select Jamie Chen">
                     </td>
@@ -215,7 +218,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-fixture-row data-status="enabled" data-type="operator">
+                  <tr data-fixture-row data-status="enabled" data-type="operator" data-sort-active="2026-09-25T09:18:00Z">
                     <td>
                       <input type="checkbox" class="form-check-input" name="ids" value="3" data-row-select aria-label="Select 田中 美咲">
                     </td>
@@ -260,7 +263,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-fixture-row data-status="invited" data-type="viewer">
+                  <tr data-fixture-row data-status="invited" data-type="viewer" data-sort-active="">
                     <td>
                       <input type="checkbox" class="form-check-input" name="ids" value="4" data-row-select aria-label="Select Sam Rivera">
                     </td>
@@ -305,7 +308,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-fixture-row data-status="enabled" data-type="operator">
+                  <tr data-fixture-row data-status="enabled" data-type="operator" data-sort-active="2026-09-24T16:24:00Z">
                     <td>
                       <input type="checkbox" class="form-check-input" name="ids" value="5" data-row-select aria-label="Select Priya Taylor">
                     </td>
@@ -350,7 +353,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-fixture-row data-status="disabled" data-type="viewer">
+                  <tr data-fixture-row data-status="disabled" data-type="viewer" data-sort-active="2026-09-22T14:05:00Z">
                     <td>
                       <input type="checkbox" class="form-check-input" name="ids" value="6" data-row-select aria-label="Select Morgan Kim">
                     </td>
@@ -395,7 +398,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-fixture-row data-status="enabled" data-type="viewer">
+                  <tr data-fixture-row data-status="enabled" data-type="viewer" data-sort-active="2026-09-24T11:42:00Z">
                     <td>
                       <input type="checkbox" class="form-check-input" name="ids" value="7" data-row-select aria-label="Select Jordan Lee">
                     </td>
@@ -440,7 +443,7 @@
                       </div>
                     </td>
                   </tr>
-                  <tr data-fixture-row data-status="enabled" data-type="operator">
+                  <tr data-fixture-row data-status="enabled" data-type="operator" data-sort-active="2026-09-23T08:30:00Z">
                     <td>
                       <input type="checkbox" class="form-check-input" name="ids" value="8" data-row-select aria-label="Select Riley Smith">
                     </td>
@@ -508,7 +511,7 @@
           </div>
         </div>
         <div class="ui-table-footer">
-          <span><strong data-result-count>8</strong> users on this page · 10 total fixtures</span>
+          <span><strong data-result-count>8</strong> users on this page · 10 total fixtures<br><small>Static preview: sorting affects rows on this page only.</small></span>
           <nav aria-label="Example pagination">
             <ul class="pagination mb-0">
               <li class="page-item disabled">

@@ -26,7 +26,9 @@ GET /users?q=tanaka&status=enabled&type=operator&page=1
 
 ラベルとvalueはエスケープ済みの翻訳/入力値。status/type/pageは許可値へ検証する。ページ変更時はfilter/sortを維持し、新規検索時はpageをリセット。refreshは現在のcanonical URLへ普通のGET。Reload / Back / Bookmark / Deep linkはブラウザーに任せる。
 
-fixtureの `reference-demo.js` は、GET後にURLのqueryから既存HTML行を隠すだけ。新しいHTMLを生成しない。ページングは別の静的ページで例示し、filter付き検索は1ページ目のfixtureが対象。実装先ではクエリー結果と件数をサーバーが出力する。
+fixtureの `reference-demo.js` は、GET後にURLのqueryから既存HTML行を隠したり並べ替えたりする。新しいHTML行を生成しない。ページングは別の静的ページで例示し、filter付き検索は1ページ目のfixtureが対象。実装先ではクエリー結果と件数をサーバーが出力する。
+
+列見出しのソートは通常のGETリンクで `sort` と `dir` を指定する。同じ列を再選択すると昇順・降順が切り替わる。`q` / `status` / `type` などの検索条件を維持し、ソート変更時は `page` を1へ戻す。サーバーは列名と方向を許可リストで検証し、安定した二次キー（例: user ID）を付け、**全検索結果をソートしてからページ分割**する。SQLの列識別子へクエリ文字列を直接連結しない。現在の列には `aria-sort="ascending"` または `descending` を付け、ヘッダーリンクをキーボード操作可能にする。静的fixtureはサーバーを持たないため、`reference-demo.js` が各HTMLに存在する行だけを並べ替える。これは本番用の全件ソートではない。
 
 ## POST and PRG
 

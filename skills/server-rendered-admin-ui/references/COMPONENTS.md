@@ -42,10 +42,12 @@ Bootstrapのclass/APIを維持し、`admin-ui.css` で視覚を統一する。�
 
 - `.ui-auth-shell`: ログイン専用のブランド領域とフォーム領域。`assets/css/login.css` を `admin-ui.css` の後に読み、認証処理はhostのPOSTに委ねる。静的例は `login.html` / `login-ja.html`。
 - Reference UI の各管理画面では、サイドバーの Workspace に `Sign in` へのリンクを置き、ログイン画面の例へ直接移動できるようにする。実アプリの認証済みナビゲーションに同じリンクが必要かは host が判断する。
+- 公開デモのサイドバー下部には `.ui-sidebar-return` で GitHub Pages のShowcaseへ戻る通常リンクを置く。これはReferenceの閲覧用導線であり、hostの本番ナビゲーションには必要に応じて置き換える。
 - `.ui-page-header`: h1 / description / `.ui-actions`。card wrapper不要。
 - `.ui-account-menu`: ヘッダー右上のnative `details`。個人設定への通常リンクとログアウトのプレビューを含む。実アプリのログアウトはホストがPOSTで処理する。
 - `.ui-toolbar`: `form method=get`、label付きinput/select、submitとreset link。
 - `.ui-table-wrap`: named region + tabindex、table/caption/th[scope=col]。
+- 並べ替え可能な列は `<th data-sort-column>` 内に通常のGETリンク `.ui-sort-link` を置く。選択列には `aria-sort`、方向アイコン、accent underlineを付ける。実データはサーバーで全件ソート後にページ分割する。
 - `.ui-status-*`: 意味色とlabel。製品のstate vocabularyはホスト定義。
 - `#ui-dialog`: ページlayoutに一つ。`data-ui-message` / submitterの`data-ui-confirm`、`data-confirm-*`が入力。
 - `.offcanvas`: Bootstrap APIのまま。read-only内容と通常の詳細ページへのリンク。
