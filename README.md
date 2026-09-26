@@ -72,7 +72,7 @@ This English README is the canonical source for project facts. Keep [README.ja.m
 ```text
 Use AdminFoundry to design a server-rendered administration console.
 
-Product: Acme Operations
+Product: Example Operations
 Theme: Graphite
 Accent: Blue
 
@@ -130,6 +130,6 @@ docs/images/                        README and showcase screenshots
 .github/workflows/pages.yml         GitHub Pages artifact and deployment workflow
 ```
 
-This is a **0.1.2 prerelease** and has not been published to a plugin directory. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for Bootstrap, Bootstrap Icons, Chart.js, and transitive license information. AdminFoundry-authored code and documentation are [MIT licensed](LICENSE); third-party distributions retain their own licenses.
+This is a **0.1.3 prerelease** and has not been published to a plugin directory. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) for Bootstrap, Bootstrap Icons, Chart.js, and transitive license information. AdminFoundry-authored code and documentation are [MIT licensed](LICENSE); third-party distributions retain their own licenses.
 
 To preview the Pages artifact locally, run `pwsh -File site/build-pages.ps1` from a fresh checkout and serve `.work/pages/` with any static server. The script copies the canonical reference UI and its local CSS, JavaScript, icons, and vendor assets into a disposable publish directory; the source pages remain in one place. The showcase is published at [masapomu.github.io/admin-foundry](https://masapomu.github.io/admin-foundry/) using GitHub Actions.

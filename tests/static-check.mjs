@@ -8,7 +8,7 @@ const pageRoot=`${assetRoot}/reference-ui`;
 const files=readdirSync(pageRoot).filter(f=>f.endsWith('.html'));
 const manifest=JSON.parse(readFileSync('plugin.json','utf8'));
 assert.equal(manifest.name,'admin-foundry');
-assert.equal(manifest.version,'0.1.2');
+assert.equal(manifest.version,'0.1.3');
 assert.equal(manifest.homepage,'https://masapomu.github.io/admin-foundry/');
 const codexManifest=JSON.parse(readFileSync('.codex-plugin/plugin.json','utf8'));
 assert.equal(codexManifest.version,manifest.version);

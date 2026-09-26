@@ -72,7 +72,7 @@ Skillは**Design**、**Implement**、**Review**に対応します。作業に関
 ```text
 AdminFoundryを使って、サーバー描画の管理コンソールを設計してください。
 
-製品: Acme Operations
+製品: Example Operations
 テーマ: Graphite
 アクセント: Blue
 
@@ -130,6 +130,6 @@ docs/images/                        READMEとShowcaseのスクリーンショッ
 .github/workflows/pages.yml         GitHub Pagesのartifact・デプロイworkflow
 ```
 
-現在は**0.1.2のプレリリース**で、Plugin Directoryには未公開です。Bootstrap、Bootstrap Icons、Chart.jsと関連ライブラリのライセンスは [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) を参照してください。AdminFoundryの自作コードと文書は [MITライセンス](LICENSE) で、第三者配布物にはそれぞれのライセンスが適用されます。
+現在は**0.1.3のプレリリース**で、Plugin Directoryには未公開です。Bootstrap、Bootstrap Icons、Chart.jsと関連ライブラリのライセンスは [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) を参照してください。AdminFoundryの自作コードと文書は [MITライセンス](LICENSE) で、第三者配布物にはそれぞれのライセンスが適用されます。
 
 Pagesと同じartifactをローカルで確認するには、新しいcheckoutで `pwsh -File site/build-pages.ps1` を実行し、`.work/pages/` を任意の静的サーバーで配信してください。スクリプトはcanonical Reference UIとローカルのCSS、JavaScript、アイコン、vendorアセットを一時的な公開ディレクトリへコピーします。ソースは一か所のままです。ShowcaseはGitHub Actionsによって [masapomu.github.io/admin-foundry](https://masapomu.github.io/admin-foundry/) に公開されています。
